@@ -1,0 +1,427 @@
+/* Секция отзывов */
+/* .reviews {
+  padding: 0;
+  background-color: transparent;
+} */
+
+.container {
+  max-width: 1440px;
+  width: calc(100% - 2rem);
+  margin: 2rem auto;
+  padding: 2rem;
+  box-sizing: border-box;
+  border-radius: 1.5rem;
+  background-color: var(--card-bg);
+  box-shadow: 0 10px 15px -3px var(--shadow);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--card-border);
+  transition: background 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+  opacity: 0;
+  transform: translateX(100px);
+}
+
+/* Анимация появления */
+.containerVisible {
+  animation: slideInFromRight 1s ease-out forwards;
+}
+
+@keyframes slideInFromRight {
+  0% {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--text-color);
+  transition: color 0.3s ease;
+}
+
+/* Слайдер */
+.sliderWrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.sliderContainer {
+  flex: 1;
+  overflow: hidden;
+  padding: 0 0.5rem;
+}
+
+.sliderTrack {
+  display: flex;
+  gap: 1rem;
+  transition: transform 0.5s ease;
+}
+
+.sliderBtn {
+  flex-shrink: 0;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: var(--text-accent);
+  color: white;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.sliderBtn:hover:not(:disabled) {
+  background: var(--toggle-border-hover);
+  transform: scale(1.1);
+}
+
+.sliderBtn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* Карточка відгуку */
+.reviewCard {
+  flex: 0 0 calc(33.333% - 0.667rem);
+  background-color: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 6px -1px var(--shadow);
+  border: 1px solid var(--card-border);
+  transition: box-shadow 0.3s ease;
+}
+
+.reviewCard:hover {
+  box-shadow: 0 10px 15px -3px var(--shadow);
+}
+
+.reviewHeader {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.avatar {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  margin-right: 1rem;
+  background: var(--text-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.reviewInfo {
+  flex: 1;
+}
+
+.reviewName {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  color: var(--text-color);
+  transition: color 0.3s ease;
+}
+
+.reviewRating {
+  display: flex;
+  gap: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.reviewDate {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  transition: color 0.3s ease;
+}
+
+.reviewContent {
+  background-color: transparent;
+  padding: 0;
+  border-radius: 0;
+  border: none;
+  margin-left: 0;
+}
+
+.reviewText {
+  color: var(--text-color);
+  line-height: 1.6;
+  transition: color 0.3s ease;
+}
+
+/* Звезды */
+.star {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: #d1d5db;
+  transition: color 0.2s ease;
+}
+
+.starFilled {
+  color: #fbbf24;
+}
+
+.starInteractive {
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+}
+
+.starInteractive:hover {
+  color: #fbbf24;
+}
+
+/* Кнопка */
+.buttonWrapper {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.submitButton {
+  background: var(--text-accent);
+  color: white;
+  padding: 0.75rem 2rem;
+  border-radius: 0.75rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.submitButton:hover {
+  background: var(--toggle-border-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(175, 148, 79, 0.3);
+}
+
+/* Модальное окно */
+.modal {
+  position: fixed;
+  z-index: 50;
+  inset: 0;
+  background-color: rgba(17, 24, 39, 0.6);
+  overflow-y: auto;
+  height: 100%;
+  width: 100%;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modalContent {
+  position: relative;
+  width: 100%;
+  max-width: 48rem;
+  margin: 0 auto;
+  background-color: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 20px 25px -5px var(--shadow);
+  transition: background 0.3s ease;
+}
+
+@media (min-width: 768px) {
+  .modalContent {
+    padding: 2rem;
+  }
+}
+
+.closeButton {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  color: var(--text-secondary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.375rem;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 0.5rem;
+  transition: color 0.2s ease;
+}
+
+.closeButton:hover {
+  color: var(--text-color);
+}
+
+.closeIcon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.modalTitle {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: var(--text-color);
+  transition: color 0.3s ease;
+}
+
+@media (min-width: 768px) {
+  .modalTitle {
+    font-size: 1.5rem;
+  }
+}
+
+/* Форма */
+.form {
+  width: 100%;
+}
+
+.formGrid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .formGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.formColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.formGroup {
+  margin-bottom: 1rem;
+}
+
+.formGroupFull {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: var(--text-color);
+  transition: color 0.3s ease;
+}
+
+.input,
+.textarea {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--toggle-border);
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  background: var(--card-bg);
+  color: var(--text-color);
+}
+
+.input:focus,
+.textarea:focus {
+  outline: none;
+  border-color: var(--text-accent);
+  box-shadow: 0 0 0 2px rgba(175, 148, 79, 0.2);
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 150px;
+  flex: 1;
+}
+
+.starsWrapper {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* Honeypot - скрытое поле */
+.honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.formSubmit {
+  grid-column: 1 / -1;
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+/* Адаптивність */
+@media (max-width: 1023px) {
+  .reviewCard {
+    flex: 0 0 calc(50% - 0.5rem);
+  }
+}
+
+@media (max-width: 767px) {
+  .container {
+    margin: 1.5rem auto;
+    padding: 1rem;
+  }
+
+  .title {
+    font-size: 1.25rem;
+  }
+
+  .sliderWrapper {
+    gap: 0.5rem;
+  }
+
+  .sliderBtn {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .sliderContainer {
+    padding: 0;
+  }
+
+  .sliderTrack {
+    gap: 0;
+  }
+
+  .reviewCard {
+    flex: 0 0 100%;
+    padding: 1rem;
+  }
+
+  .reviewContent {
+    padding: 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    width: calc(100% - 4rem);
+  }
+}
+
+@media (min-width: 1440px) {
+  .container {
+    width: calc(100% - 6rem);
+  }
+}

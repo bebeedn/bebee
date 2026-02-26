@@ -1,0 +1,142 @@
+
+
+.categories {
+  max-width: 1440px;
+  margin: 2rem auto;
+  padding: 0;
+  background: transparent;
+}
+
+.container {
+  padding: 0 1rem;
+  background: transparent;
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding: 0 2rem;
+  }
+}
+
+@media (min-width: 1440px) {
+  .container {
+    padding: 0 3rem;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .categories {
+    margin: 1.5rem 1.5rem;
+  }
+  
+  .container {
+    padding: 0 1rem;
+  }
+}
+
+.card {
+  background: var(--card-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--card-border);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 4px 6px var(--shadow);
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+/* Анимация появления карточки */
+.cardVisible {
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px var(--shadow);
+  border-color: var(--text-accent);
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--text-color);
+  margin: 0;
+  transition: color 0.3s ease;
+}
+
+.card:hover .title {
+  color: var(--text-accent);
+}
+
+.imageWrapper {
+  width: 100%;
+  height: 200px;
+  position: relative;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.card:hover .image {
+  transform: scale(1.1);
+}
+
+@media (min-width: 768px) {
+  .imageWrapper {
+    height: 250px;
+  }
+}
+
+/* Экраны менее 500px - уменьшаем высоту карточек */
+@media (max-width: 500px) {
+  .card {
+    padding: 1.5rem;
+    gap: 1rem;
+  }
+  
+  .imageWrapper {
+    height: 150px;
+  }
+  
+  .title {
+    font-size: 1.25rem;
+  }
+}

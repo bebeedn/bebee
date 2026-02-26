@@ -1,0 +1,118 @@
+/* AboutSection Component Styles */
+
+.about {
+  max-width: 1440px;
+  width: calc(100% - 2rem);
+  margin: 2rem auto;
+  padding: 2rem 1rem;
+  box-sizing: border-box;
+  background: var(--card-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--card-border);
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 6px var(--shadow);
+  transition: background 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+  opacity: 0;
+  transform: translateX(-100px);
+}
+
+/* Анимация появления */
+.aboutVisible {
+  animation: slideInFromLeft 1s ease-out forwards;
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Увеличенный padding для больших экранов */
+@media (min-width: 1024px) {
+  .about {
+    width: calc(100% - 4rem);
+    padding: 2rem 2rem;
+  }
+}
+
+@media (min-width: 1440px) {
+  .about {
+    width: calc(100% - 6rem);
+    padding: 2rem 3rem;
+  }
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  color: var(--text-color);
+  text-align: center;
+  transition: color 0.3s ease;
+}
+
+/* Grid контейнер для видео и текста */
+.content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+/* Видео слева */
+.videoWrapper {
+  width: 100%;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.video {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 1rem;
+}
+
+/* Текст справа */
+.textWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.text {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text-color);
+  text-align: left;
+  transition: color 0.3s ease;
+}
+
+/* Мобильная версия */
+@media (max-width: 768px) {
+  .about {
+    margin: 1.5rem auto;
+    padding: 1.5rem;
+  }
+
+  .title {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .content {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .text {
+    font-size: 0.9375rem;
+    text-align: center;
+  }
+}

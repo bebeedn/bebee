@@ -1,66 +1,48 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+'use client';
+
+import { useState } from 'react';
+import Header from './components/Header/Header';
+import Banner from './components/Banner/Banner';
+import Categories from './components/Categories/Categories';
+import AboutSection from './components/AboutSection/AboutSection';
+import AchievementSection from './components/AchievementSection/AchievementSection';
+import Reviews from './components/Reviews/Reviews';
+import Gallery from './components/Gallery/Gallery';
+import Footer from './components/Footer/Footer';
+import Modal from './components/Modal/Modal';
+import AnimatedBee from './components/AnimatedBee/AnimatedBee';
+import styles from './page.module.css';
 
 export default function Home() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <div className={styles.page}>
+      <Header onOpenModal={handleOpenModal} />
+      
       <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.js file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+        <Banner onOpenModal={handleOpenModal} />
+        <Categories />
+        <AboutSection />
+        {/* <AchievementSection /> */}
+        <Gallery />
+        <Reviews />
       </main>
+
+      <Footer />
+
+      <Modal isOpen={isModalOpen} onClose={handleCloseModal} />
+      
+      {/* Анимированная пчела */}
+      <AnimatedBee />
     </div>
   );
 }

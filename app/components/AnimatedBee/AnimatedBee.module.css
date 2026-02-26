@@ -1,0 +1,26 @@
+/* AnimatedBee Component Styles */
+
+.beeContainer {
+  position: fixed;
+  transform: translateY(-50%);
+  width: 230px;
+  height: 230px;
+  z-index: 1000;
+  pointer-events: none;
+  transition: right 0.3s ease-out, top 0.3s ease-out, opacity 0.3s ease-out;
+}
+
+.beeVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* Мобильная версия - уменьшаем пчелу */
+@media (max-width: 768px) {
+  .beeContainer {
+    width: 140px;
+    height: 140px;
+  }
+}

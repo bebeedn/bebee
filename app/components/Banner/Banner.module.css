@@ -1,0 +1,178 @@
+
+
+.banner {
+   
+  max-width: 1440px;
+  width: calc(100% - 2rem);
+  margin: 1.5rem auto;
+  padding: 0;
+  animation: zoomIn 2.5s ease-out;
+}
+
+@keyframes zoomIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.container {
+  padding: 0;
+  position: relative;
+}
+
+/* Увеличенный padding для больших экранов */
+@media (min-width: 1024px) {
+  .banner {
+    width: calc(100% - 4rem);
+  }
+
+  .container {
+    padding: 0;
+    
+  }
+}
+
+@media (min-width: 1440px) {
+  .banner {
+    width: calc(100% - 6rem);
+  }
+
+  .container {
+    padding: 0;
+  }
+}
+
+.content {
+  position: relative;
+}
+
+.overlayMobile {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  text-align: center;
+  width: 100%;
+  padding: 0 1rem;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+  text-shadow: 0 2px 4px var(--shadow);
+  transition: color 0.3s ease;
+}
+
+.btn {
+  background: var(--text-accent);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 1rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  width: 75%;
+  margin: 0 auto;
+  display: block;
+  transition: all 0.3s ease;
+  font-size: 0.875rem;
+}
+
+.btn:hover {
+  background: #9a8245;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(175, 148, 79, 0.3);
+}
+
+.imageWrapper {
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 19px;
+  overflow: hidden;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 19px;
+}
+
+/* Бджілка в правому нижньому куті */
+.beeImage {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 5;
+}
+
+.bee {
+  width: 123px;
+  height: auto;
+  display: block;
+}
+
+/* Десктоп версия - скрыта на мобилке */
+.titleDesktop,
+.btnDesktop {
+  display: none;
+}
+
+/* Мобильная версия */
+@media (max-width: 639px) {
+  .overlayMobile {
+    display: block;
+  }
+
+  .title {
+    font-size: 1.25rem;
+  }
+}
+
+/* Десктоп версия */
+@media (min-width: 640px) {
+  .overlayMobile {
+    display: none;
+  }
+
+  .titleDesktop {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: 1rem;
+    color: var(--text-color);
+    transition: color 0.3s ease;
+  }
+
+  .btnDesktop {
+    display: block;
+    background: #4B9444;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 1rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    width: 75%;
+    margin: 1rem auto 0;
+    transition: all 0.3s ease;
+  }
+
+  .btnDesktop:hover {
+    background: #3A8240;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+}
