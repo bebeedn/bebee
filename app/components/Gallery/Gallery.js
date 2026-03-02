@@ -11,31 +11,73 @@ export default function Gallery() {
   const [scrollDirection, setScrollDirection] = useState('down');
   const galleryRef = useRef(null);
   const lastScrollY = useRef(0);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isMounted) return;
+
     const handleScroll = () => {
-      const currentScrollY = window.pageYOffset;
+      const currentScrollY = window.pageYOffset || window.scrollY || document.documentElement.scrollTop;
       
-      // Определяем направление скролла
-      if (currentScrollY > lastScrollY.current) {
-        setScrollDirection('down');
-      } else {
-        setScrollDirection('up');
+      // Определяем направление скролла с небольшим порогом для избежания дрожания
+      if (Math.abs(currentScrollY - lastScrollY.current) > 5) {
+        if (currentScrollY > lastScrollY.current) {
+          setScrollDirection('down');
+        } else if (currentScrollY < lastScrollY.current) {
+          setScrollDirection('up');
+        }
+        lastScrollY.current = currentScrollY;
       }
+    };
+
+    // Для iOS Safari используем touchmove для более точного определения
+    let touchStartY = 0;
+    const handleTouchStart = (e) => {
+      touchStartY = e.touches[0].clientY;
+    };
+
+    const handleTouchMove = (e) => {
+      const touchY = e.touches[0].clientY;
+      const diff = touchStartY - touchY;
       
-      lastScrollY.current = currentScrollY;
+      if (Math.abs(diff) > 10) {
+        if (diff > 0) {
+          setScrollDirection('down');
+        } else {
+          setScrollDirection('up');
+        }
+        touchStartY = touchY;
+      }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    window.addEventListener('touchstart', handleTouchStart, { passive: true });
+    window.addEventListener('touchmove', handleTouchMove, { passive: true });
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('touchstart', handleTouchStart);
+      window.removeEventListener('touchmove', handleTouchMove);
+    };
+  }, [isMounted]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         // Включаем анимацию при входе в зону видимости
         // Выключаем при выходе
-        setIsVisible(entry.isIntersecting);
+        const wasVisible = isVisible;
+        const nowVisible = entry.isIntersecting;
+        
+        if (!wasVisible && nowVisible) {
+          console.log('Gallery became visible, scroll direction:', scrollDirection);
+        }
+        
+        setIsVisible(nowVisible);
       },
       { threshold: 0.1 } // Срабатывает когда 10% компонента видно
     );
@@ -49,7 +91,7 @@ export default function Gallery() {
         observer.unobserve(galleryRef.current);
       }
     };
-  }, []);
+  }, [scrollDirection]);
 
   const images = [
     { src: '/images/3037_MyshkoAlex_R62_0495.jpg', alt: 'Be-Bee School - Учень за партою' },
