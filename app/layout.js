@@ -5,6 +5,12 @@ export const metadata = {
   title: "BE-BEE School - Приватна школа",
   description: "BE-BEE School - освітній комплекс з якісною академічною освітою, розвитком здібностей та продуманим режимом дня.",
   keywords: "приватна школа, школа, початкова школа",
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 1,
+    userScalable: false,
+  },
 };
 
 export default function RootLayout({ children }) {
