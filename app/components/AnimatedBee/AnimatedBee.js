@@ -16,6 +16,7 @@ export default function AnimatedBee() {
     const ua = navigator.userAgent;
     const safari = /^((?!chrome|android).)*safari/i.test(ua);
     setIsSafari(safari);
+    console.log('AnimatedBee: isSafari =', safari, 'userAgent =', ua);
   }, []);
 
   useEffect(() => {
@@ -121,6 +122,8 @@ export default function AnimatedBee() {
           src="/images/bee_1.png"
           alt="Bee"
           className={`${styles.beeImage} ${styles.beeImageAnimated}`}
+          onLoad={() => console.log('Bee image loaded')}
+          onError={(e) => console.error('Bee image failed to load', e)}
         />
       ) : isSafari === false ? (
         <video

@@ -32,16 +32,23 @@
   height: 100%;
   object-fit: contain;
   display: block;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 
 /* Удалить анимацию можно, убрав класс beeImageAnimated в AnimatedBee.js */
 .beeImageAnimated {
+  -webkit-transform-origin: 50% 60%;
   transform-origin: 50% 60%;
-  animation: beeFloat 3.6s ease-in-out infinite;
   -webkit-animation: beeFloat 3.6s ease-in-out infinite;
+  animation: beeFloat 3.6s ease-in-out infinite;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
   will-change: transform;
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-perspective: 1000;
+  perspective: 1000;
 }
 
 @keyframes beeFloat {
@@ -93,6 +100,17 @@
 @media (prefers-reduced-motion: reduce) {
   .beeImageAnimated {
     animation: none;
+    -webkit-animation: none;
+  }
+}
+
+/* Усиленная анимация для мобильных устройств (iOS) */
+@media (max-width: 768px) {
+  .beeImageAnimated {
+    -webkit-animation: beeFloat 3.6s ease-in-out infinite;
+    animation: beeFloat 3.6s ease-in-out infinite;
+    -webkit-animation-play-state: running;
+    animation-play-state: running;
   }
 }
 
