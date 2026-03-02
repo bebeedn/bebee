@@ -3,12 +3,16 @@
 .beeContainer {
   position: fixed;
   transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
   width: 230px;
   height: 230px;
   z-index: 9999;
   pointer-events: none;
   transition: right 0.3s ease-out, top 0.3s ease-out, opacity 0.3s ease-out;
+  -webkit-transition: right 0.3s ease-out, top 0.3s ease-out, opacity 0.3s ease-out;
   background: transparent;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 .beeVideo {
@@ -34,22 +38,54 @@
 .beeImageAnimated {
   transform-origin: 50% 60%;
   animation: beeFloat 3.6s ease-in-out infinite;
+  -webkit-animation: beeFloat 3.6s ease-in-out infinite;
+  will-change: transform;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 
 @keyframes beeFloat {
   0% {
     transform: translateY(0) rotate(0deg) scale(1);
+    -webkit-transform: translateY(0) rotate(0deg) scale(1);
   }
   25% {
     transform: translateY(-5px) rotate(-2deg) scale(1.01);
+    -webkit-transform: translateY(-5px) rotate(-2deg) scale(1.01);
   }
   50% {
     transform: translateY(-9px) rotate(1deg) scale(1.02);
+    -webkit-transform: translateY(-9px) rotate(1deg) scale(1.02);
   }
   75% {
     transform: translateY(-4px) rotate(2deg) scale(1.01);
+    -webkit-transform: translateY(-4px) rotate(2deg) scale(1.01);
   }
   100% {
+    transform: translateY(0) rotate(0deg) scale(1);
+    -webkit-transform: translateY(0) rotate(0deg) scale(1);
+  }
+}
+
+@-webkit-keyframes beeFloat {
+  0% {
+    -webkit-transform: translateY(0) rotate(0deg) scale(1);
+    transform: translateY(0) rotate(0deg) scale(1);
+  }
+  25% {
+    -webkit-transform: translateY(-5px) rotate(-2deg) scale(1.01);
+    transform: translateY(-5px) rotate(-2deg) scale(1.01);
+  }
+  50% {
+    -webkit-transform: translateY(-9px) rotate(1deg) scale(1.02);
+    transform: translateY(-9px) rotate(1deg) scale(1.02);
+  }
+  75% {
+    -webkit-transform: translateY(-4px) rotate(2deg) scale(1.01);
+    transform: translateY(-4px) rotate(2deg) scale(1.01);
+  }
+  100% {
+    -webkit-transform: translateY(0) rotate(0deg) scale(1);
     transform: translateY(0) rotate(0deg) scale(1);
   }
 }
