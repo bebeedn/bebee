@@ -67,3 +67,18 @@
     height: 140px;
   }
 }
+
+/* На очень маленьких экранах еще больше уменьшаем пчелу */
+@media (max-width: 495px) {
+  .beeContainer {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+@media (max-width: 375px) {
+  .beeContainer {
+    width: 80px;
+    height: 80px;
+  }
+}
