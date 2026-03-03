@@ -96,7 +96,7 @@ export default function AnimatedBee() {
 
   // На мобильных устройствах смещаем пчелу правее
   if (isMobile) {
-    rightPosition = Math.max(rightPosition - 8, -3); // Смещаем на 8% правее
+    rightPosition = Math.max(rightPosition - 8, -3); 
   }
 
   const topPosition = isMobile && bannerBottom > 0

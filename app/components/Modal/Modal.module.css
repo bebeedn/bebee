@@ -38,7 +38,7 @@
   border: none;
   font-size: 1.5rem;
   cursor: pointer;
-  color: var(--text-secondary);
+  color: #6B7280;
   transition: color 0.3s ease;
   width: 32px;
   height: 32px;
@@ -48,6 +48,14 @@
 }
 
 .closeBtn:hover {
+  color: #374151;
+}
+
+:global([data-theme='dark']) .closeBtn {
+  color: var(--text-secondary);
+}
+
+:global([data-theme='dark']) .closeBtn:hover {
   color: var(--text-color);
 }
 
