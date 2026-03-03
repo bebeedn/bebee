@@ -11,15 +11,47 @@ export default function Header({ onOpenModal }) {
 
   // Обработка скролла для sticky header
   useEffect(() => {
+    // Создаем элемент-триггер
+    const trigger = document.createElement('div');
+    trigger.style.position = 'absolute';
+    trigger.style.top = '200px';
+    trigger.style.height = '1px';
+    trigger.style.width = '100%';
+    trigger.style.pointerEvents = 'none';
+    document.body.appendChild(trigger);
+
+    // Используем Intersection Observer
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsStickyVisible(!entry.isIntersecting);
+      },
+      { threshold: 0 }
+    );
+
+    observer.observe(trigger);
+
+    // Также оставляем scroll listener как fallback
+    let ticking = false;
     const handleScroll = () => {
-      const scrollThreshold = 200;
-      const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-      
-      setIsStickyVisible(currentScroll > scrollThreshold);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const scrollThreshold = 200;
+          const currentScroll = window.scrollY || window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+          
+          setIsStickyVisible(currentScroll > scrollThreshold);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    
+    return () => {
+      observer.disconnect();
+      document.body.removeChild(trigger);
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   const toggleMobileMenu = () => {
