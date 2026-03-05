@@ -69,6 +69,9 @@ export default function Categories() {
                   width={400}
                   height={300}
                   className={styles.image}
+                  quality={80}
+                  loading="lazy"
+                  sizes="(max-width: 768px) 75vw, (max-width: 1024px) 50vw, 33vw"
                 />
               </div>
             </a>

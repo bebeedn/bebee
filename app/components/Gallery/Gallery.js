@@ -14,12 +14,7 @@ export default function Gallery() {
   const autoPlayTimeoutRef = useRef(null);
 
   const images = [
-    { src: '/gallery_photo/3037_MyshkoAlex_R62_0495.jpg', alt: 'Be-Bee School - Учень за партою' },
-    { src: '/gallery_photo/3094_MyshkoAlex_R62_0705.jpg', alt: 'Be-Bee School - Групове фото учнів' },
-    { src: '/gallery_photo/3291_MyshkoAlex_MR6_3916.jpg', alt: 'Be-Bee School - Святкування в школі' },
-    { src: '/gallery_photo/IMG_1884.JPG', alt: 'Be-Bee School - Шкільні моменти' },
-    { src: '/gallery_photo/IMG_2174.JPG', alt: 'Be-Bee School - Навчальний процес' },
-    { src: '/gallery_photo/IMG_2176.JPG', alt: 'Be-Bee School - Учні школи' },
+    
     { src: '/gallery_photo/2026-03-05 15.40.47.jpg', alt: 'Be-Bee School - Галерея' },
     { src: '/gallery_photo/2026-03-05 15.40.56.jpg', alt: 'Be-Bee School - Галерея' },
     { src: '/gallery_photo/2026-03-05 15.41.11.jpg', alt: 'Be-Bee School - Галерея' },
@@ -136,9 +131,11 @@ export default function Gallery() {
                     src={image.src}
                     alt={image.alt}
                     fill
-                    sizes="100vw"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1440px"
                     className={styles.image}
                     priority={index === 0}
+                    quality={75}
+                    loading={index === 0 ? 'eager' : 'lazy'}
                   />
                 </div>
               ))}

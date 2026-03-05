@@ -82,6 +82,7 @@ export default function Header({ onOpenModal }) {
               width={194}
               height={58}
               priority
+              quality={90}
             />
           </a>
 
@@ -94,6 +95,8 @@ export default function Header({ onOpenModal }) {
                 alt="Phone" 
                 width={16}
                 height={16}
+                quality={85}
+                loading="lazy"
               />
             </a>
           </div>
@@ -129,6 +132,8 @@ export default function Header({ onOpenModal }) {
                 alt="Close" 
                 width={32}
                 height={32}
+                quality={85}
+                loading="lazy"
               />
             </button>
 
@@ -191,6 +196,8 @@ export default function Header({ onOpenModal }) {
               alt="BE-BEE School Logo" 
               width={141}
               height={42}
+              quality={90}
+              loading="lazy"
             />
           </a>
 
