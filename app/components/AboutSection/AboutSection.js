@@ -37,6 +37,13 @@ export default function AboutSection() {
       <h2 className={styles.title}>Про нас</h2>
       
       <div className={styles.content}>
+        {/* Первый пункт - показывается сверху на средних экранах */}
+        <div className={styles.topText}>
+          <ul className={styles.list}>
+            <li className={styles.listItem}>BeBee - сучасний освітній простір для дітей дошкільного та молодшого шкільного віку. Ми об'єднуємо приватний садочок, початкову школу та систему додаткових занять в єдину цілісну освітню екосистему.</li>
+          </ul>
+        </div>
+
         {/* Видео слева */}
         <div className={styles.videoWrapper}>
           <video 
@@ -49,16 +56,21 @@ export default function AboutSection() {
           </video>
         </div>
 
-        {/* Текст справа */}
+        {/* Текст справа - средние пункты */}
         <div className={styles.textWrapper}>
-          <p className={styles.text}>
-            BE-BEE-SCHOOL- освітній комплекс, у якому дитина навчається в цілісному середовищі, де поєднані:
-            <br />• якісна академічна освіта;
-            <br />• розвиток здібностей і інтересів;
-            <br />• продуманий режим дня;
-            <br />• фізична активність і здоров'я;
-            <br />• зручна інфраструктура для дитини й родини
-          </p>
+          <ul className={styles.list}>
+            <li className={`${styles.listItem} ${styles.firstItem}`}>BeBee - сучасний освітній простір для дітей дошкільного та молодшого шкільного віку. Ми об'єднуємо приватний садочок, початкову школу та систему додаткових занять в єдину цілісну освітню екосистему.</li>
+            <li className={styles.listItem}>Наша мета - дати дитині не лише знання, а й міцний фундамент: самостійність, критичне мислення, впевненість у собі та повагу до інших.</li>
+            <li className={styles.listItem}>Малокомплектні класи, професійна команда педагогів, продумана освітня програма та безпечне середовище - основа нашого підходу.</li>
+            <li className={`${styles.listItem} ${styles.lastItem}`}>BeBee - якісна освіта з турботою про особистість.</li>
+          </ul>
+        </div>
+
+        {/* Последний пункт - показывается снизу на средних экранах */}
+        <div className={styles.bottomText}>
+          <ul className={styles.list}>
+            <li className={styles.listItem}>BeBee - якісна освіта з турботою про особистість.</li>
+          </ul>
         </div>
       </div>
     </section>

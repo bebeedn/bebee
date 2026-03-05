@@ -15,7 +15,7 @@ export default function Categories() {
         // Выключаем при выходе
         setIsVisible(entry.isIntersecting);
       },
-      { threshold: 0.1 } // Срабатывает когда 10% компонента видно
+      { threshold: 0.1 } 
     );
 
     if (containerRef.current) {
@@ -33,19 +33,19 @@ export default function Categories() {
     {
       title: 'Садочок',
       href: '#kindergarten',
-      image: '/images/ССС.jpg',
+      image: '/categories_photo/2026-03-05 14.25.05.jpg',
       alt: 'Діти граються в садочку'
     },
     {
       title: 'Школа',
       href: '#school',
-      image: '/images/foto_scholl.png',
+      image: '/categories_photo/2026-03-05 14.25.12.jpg',
       alt: 'Учні в класі'
     },
     {
-      title: 'Секції',
+      title: 'Додаткові заняття',
       href: '#sections',
-      image: '/images/muz_scholl.png',
+      image: '/categories_photo/2026-03-05 14.36.51.jpg',
       alt: 'Діти на гуртках та секціях'
     }
   ];

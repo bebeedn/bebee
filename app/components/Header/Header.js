@@ -66,7 +66,7 @@ export default function Header({ onOpenModal }) {
     { href: '#about', label: 'Про нас' },
     { href: '#kindergarten', label: 'Садочок' },
     { href: '#school', label: 'Школа' },
-    { href: '#sections', label: 'Секції' },
+    { href: '#sections', label: 'Додаткові заняття' },
     { href: '#contacts', label: 'Контакти' },
   ];
 
@@ -78,7 +78,7 @@ export default function Header({ onOpenModal }) {
           <a href="#" className={styles.logo}>
             <Image 
               src="/images/logo_1.png" 
-              alt="BE-BEE School Logo" 
+              alt="BE-BEE Logo" 
               width={194}
               height={58}
               priority
@@ -239,17 +239,6 @@ export default function Header({ onOpenModal }) {
               <button className={styles.ctaButton} onClick={onOpenModal}>
                 Записатися до нас
               </button>
-            </li>
-            <li>
-              <a href="tel:+380964324325" className={styles.stickyPhoneLink}>
-                <Image 
-                  src="/images/phone.png" 
-                  alt="Phone" 
-                  width={16}
-                  height={16}
-                />
-                <span>+38(096)432-43-25</span>
-              </a>
             </li>
             <li className={styles.stickyThemeToggle}>
               <ThemeToggle />

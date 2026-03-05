@@ -99,8 +99,8 @@ export default function AnimatedBee() {
     rightPosition = Math.max(rightPosition - 8, -3); 
   }
 
-  const topPosition = isMobile && bannerBottom > 0
-    ? `${bannerBottom - 70}px`
+  const topPosition = bannerBottom > 0
+    ? `${bannerBottom - (isMobile ? 70 : 120)}px`
     : `calc(20% + 600px + ${topOffset}px)`;
 
   // Не рендерим до монтирования на клиенте

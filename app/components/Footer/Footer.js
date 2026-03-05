@@ -34,7 +34,7 @@ export default function Footer() {
       <div className={styles.container}>
         <div className={styles.content}>
           <div className={styles.info}>
-            <h3 className={styles.title}>Be-Bee School</h3>
+            <h3 className={styles.title}>Be-Bee</h3>
             <p className={styles.text}>
               Приватна школа<br />
               Якісна освіта для вашої дитини
@@ -51,7 +51,7 @@ export default function Footer() {
 
         <div className={styles.bottom}>
           <p className={styles.copyright}>
-            © {new Date().getFullYear()} Be-Bee School. Всі права захищені.
+            © {new Date().getFullYear()} Be-Bee. Всі права захищені.
           </p>
         </div>
       </div>

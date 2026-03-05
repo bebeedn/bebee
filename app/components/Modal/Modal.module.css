@@ -14,14 +14,20 @@
   padding: 1rem;
 }
 
+.modalWrapper {
+  position: relative;
+  max-width: 500px;
+  width: 100%;
+}
+
 .modal {
   background: var(--card-bg);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid var(--card-border);
   padding: 2.5rem;
+  padding-top: 4rem;
   border-radius: 1rem;
-  max-width: 500px;
   width: 100%;
   position: relative;
   max-height: 90vh;
@@ -32,31 +38,44 @@
 
 .closeBtn {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-  color: #6B7280;
-  transition: color 0.3s ease;
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  top: 1.5rem ;
+  right: 1rem ;
+  background: #FF8C00 !important;
+  border: 2px solid white !important;
+  font-size: 1.5rem !important;
+  cursor: pointer !important;
+  color: white !important;
+  transition: all 0.3s ease !important;
+  width: 40px !important;
+  height: 40px !important;
+  min-width: 40px !important;
+  min-height: 40px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  z-index: 10001 !important;
+  border-radius: 50% !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+  /* font-weight: bold !important;
+  flex-shrink: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  float: none !important;
+  line-height: 1 !important; */
 }
 
 .closeBtn:hover {
-  color: #374151;
+  background: #FFA500;
+  transform: scale(1.1);
 }
 
 :global([data-theme='dark']) .closeBtn {
-  color: var(--text-secondary);
+  background: var(--text-accent);
+  border-color: white;
 }
 
 :global([data-theme='dark']) .closeBtn:hover {
-  color: var(--text-color);
+  background: var(--toggle-border-hover);
 }
 
 .title {
@@ -195,7 +214,19 @@
 @media (max-width: 768px) {
   .modal {
     padding: 2rem 1.5rem;
+    padding-top: 3.5rem;
     max-height: 95vh;
+  }
+
+  .closeBtn {
+    top: 0.75rem !important;
+    right: 0.75rem !important;
+    font-size: 1.75rem !important;
+    width: 44px !important;
+    height: 44px !important;
+    min-width: 44px !important;
+    min-height: 44px !important;
+   
   }
 
   .title {
@@ -219,5 +250,17 @@
   .submitBtn {
     padding: 0.75rem 1.25rem;
     font-size: 0.9375rem;
+  }
+}
+
+/* Для экранов от 481px до 768px */
+@media (min-width: 481px) and (max-width: 768px) {
+  .closeBtn {
+    top: 1.5rem ;
+    right: 1rem !important;
+  }
+  
+  .modal {
+    padding-top: 4rem;
   }
 }

@@ -5,81 +5,48 @@ import Image from 'next/image';
 import styles from './Gallery.module.css';
 
 export default function Gallery() {
-  const [selectedImage, setSelectedImage] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
-  const [scrollDirection, setScrollDirection] = useState('down');
+  const [isAutoPlayActive, setIsAutoPlayActive] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const galleryRef = useRef(null);
-  const lastScrollY = useRef(0);
-  const [isMounted, setIsMounted] = useState(false);
+  const autoPlayTimeoutRef = useRef(null);
 
+  const images = [
+    { src: '/gallery_photo/3037_MyshkoAlex_R62_0495.jpg', alt: 'Be-Bee School - Учень за партою' },
+    { src: '/gallery_photo/3094_MyshkoAlex_R62_0705.jpg', alt: 'Be-Bee School - Групове фото учнів' },
+    { src: '/gallery_photo/3291_MyshkoAlex_MR6_3916.jpg', alt: 'Be-Bee School - Святкування в школі' },
+    { src: '/gallery_photo/IMG_1884.JPG', alt: 'Be-Bee School - Шкільні моменти' },
+    { src: '/gallery_photo/IMG_2174.JPG', alt: 'Be-Bee School - Навчальний процес' },
+    { src: '/gallery_photo/IMG_2176.JPG', alt: 'Be-Bee School - Учні школи' },
+    { src: '/gallery_photo/2026-03-05 15.40.47.jpg', alt: 'Be-Bee School - Галерея' },
+    { src: '/gallery_photo/2026-03-05 15.40.56.jpg', alt: 'Be-Bee School - Галерея' },
+    { src: '/gallery_photo/2026-03-05 15.41.11.jpg', alt: 'Be-Bee School - Галерея' },
+    { src: '/gallery_photo/2026-03-05 15.41.19.jpg', alt: 'Be-Bee School - Галерея' },
+    { src: '/gallery_photo/2026-03-05 15.41.24.jpg', alt: 'Be-Bee School - Галерея' },
+    { src: '/gallery_photo/2026-03-05 15.41.35.jpg', alt: 'Be-Bee School - Галерея' },
+    { src: '/gallery_photo/2026-03-05 15.41.41.jpg', alt: 'Be-Bee School - Галерея' },
+  ];
+
+  // Проверка мобильного устройства
   useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  useEffect(() => {
-    if (!isMounted) return;
-
-    const handleScroll = () => {
-      const currentScrollY = window.pageYOffset || window.scrollY || document.documentElement.scrollTop;
-      
-      // Определяем направление скролла с небольшим порогом для избежания дрожания
-      if (Math.abs(currentScrollY - lastScrollY.current) > 5) {
-        if (currentScrollY > lastScrollY.current) {
-          setScrollDirection('down');
-        } else if (currentScrollY < lastScrollY.current) {
-          setScrollDirection('up');
-        }
-        lastScrollY.current = currentScrollY;
-      }
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
     };
-
-    // Для iOS Safari используем touchmove для более точного определения
-    let touchStartY = 0;
-    const handleTouchStart = (e) => {
-      touchStartY = e.touches[0].clientY;
-    };
-
-    const handleTouchMove = (e) => {
-      const touchY = e.touches[0].clientY;
-      const diff = touchStartY - touchY;
-      
-      if (Math.abs(diff) > 10) {
-        if (diff > 0) {
-          setScrollDirection('down');
-        } else {
-          setScrollDirection('up');
-        }
-        touchStartY = touchY;
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    window.addEventListener('touchstart', handleTouchStart, { passive: true });
-    window.addEventListener('touchmove', handleTouchMove, { passive: true });
     
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('touchstart', handleTouchStart);
-      window.removeEventListener('touchmove', handleTouchMove);
-    };
-  }, [isMounted]);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        // Включаем анимацию при входе в зону видимости
-        // Выключаем при выходе
-        const wasVisible = isVisible;
-        const nowVisible = entry.isIntersecting;
-        
-        if (!wasVisible && nowVisible) {
-          console.log('Gallery became visible, scroll direction:', scrollDirection);
-        }
-        
-        setIsVisible(nowVisible);
+        setIsVisible(entry.isIntersecting);
       },
-      { threshold: 0.1 } // Срабатывает когда 10% компонента видно
+      { threshold: 0.1 }
     );
 
     if (galleryRef.current) {
@@ -91,58 +58,128 @@ export default function Gallery() {
         observer.unobserve(galleryRef.current);
       }
     };
-  }, [scrollDirection]);
+  }, []);
 
-  const images = [
-    { src: '/images/3037_MyshkoAlex_R62_0495.jpg', alt: 'Be-Bee School - Учень за партою' },
-    { src: '/images/3094_MyshkoAlex_R62_0705.jpg', alt: 'Be-Bee School - Групове фото учнів' },
-    { src: '/images/3291_MyshkoAlex_MR6_3916.jpg', alt: 'Be-Bee School - Святкування в школі' },
-    { src: '/images/IMG_1884.JPG', alt: 'Be-Bee School - Шкільні моменти' },
-    { src: '/images/IMG_2174.JPG', alt: 'Be-Bee School - Навчальний процес' },
-    { src: '/images/IMG_2176.JPG', alt: 'Be-Bee School - Учні школи' },
-  ];
+  // Автопрокрутка - работает только если isAutoPlayActive === true
+  useEffect(() => {
+    if (!isAutoPlayActive) return;
 
-  const openModal = (image) => {
-    setSelectedImage(image);
-    setIsLoading(true);
+    const intervalId = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % images.length);
+    }, 5000);
+
+    return () => clearInterval(intervalId);
+  }, [images.length, isAutoPlayActive]);
+
+  // Функция для остановки автопрокрутки на 10 секунд после ручного управления
+  const pauseAutoPlay = () => {
+    setIsAutoPlayActive(false);
+    
+    // Очищаем предыдущий таймаут если он есть
+    if (autoPlayTimeoutRef.current) {
+      clearTimeout(autoPlayTimeoutRef.current);
+    }
+    
+    // Возобновляем автопрокрутку через 10 секунд
+    autoPlayTimeoutRef.current = setTimeout(() => {
+      setIsAutoPlayActive(true);
+    }, 10000);
+  };
+
+  const goToPrevSlide = (e) => {
+    e.stopPropagation(); // Останавливаем всплытие события
+    pauseAutoPlay();
+    setCurrentSlide((prev) => (prev - 1 + images.length) % images.length);
+  };
+
+  const goToNextSlide = (e) => {
+    e.stopPropagation(); // Останавливаем всплытие события
+    pauseAutoPlay();
+    setCurrentSlide((prev) => (prev + 1) % images.length);
+  };
+
+  const goToSlide = (index, e) => {
+    e.stopPropagation(); // Останавливаем всплытие события
+    pauseAutoPlay();
+    setCurrentSlide(index);
+  };
+
+  const handleImageClick = () => {
+    if (isMobile) {
+      setIsModalOpen(true);
+    }
   };
 
   const closeModal = () => {
-    setSelectedImage(null);
-    setIsLoading(false);
+    setIsModalOpen(false);
   };
 
   return (
-    <section 
-      className={`${styles.gallery} ${isVisible ? styles.galleryVisible : ''} ${scrollDirection === 'up' ? styles.scrollUp : ''}`} 
-      id="gallery"
-      ref={galleryRef}
-    >
-      <div className={styles.container}>
-        <h2 className={styles.title}>Галерея</h2>
-        
-        <div className={styles.grid}>
-          {images.map((image, index) => (
-            <div 
-              key={index} 
-              className={styles.imageCard}
-              onClick={() => openModal(image)}
-            >
-              <Image
-                src={image.src}
-                alt={image.alt}
-                width={400}
-                height={300}
-                className={styles.image}
-                style={{ objectFit: 'cover' }}
-              />
-            </div>
-          ))}
-        </div>
-      </div>
+    <>
+      <section 
+        className={`${styles.gallery} ${isVisible ? styles.galleryVisible : ''}`} 
+        id="gallery"
+        ref={galleryRef}
+      >
+        <div className={styles.container}>
+          <h2 className={styles.title}>Галерея</h2>
+          
+          <div className={styles.carouselWrapper}>
+            <div className={styles.imageWrapper} onClick={handleImageClick}>
+              {images.map((image, index) => (
+                <div
+                  key={image.src}
+                  className={`${styles.slide} ${index === currentSlide ? styles.active : ''}`}
+                  aria-hidden={index !== currentSlide}
+                >
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    fill
+                    sizes="100vw"
+                    className={styles.image}
+                    priority={index === 0}
+                  />
+                </div>
+              ))}
 
-      {/* Модальное окно для просмотра фото */}
-      {selectedImage && (
+              <button
+                type="button"
+                className={`${styles.arrow} ${styles.arrowLeft}`}
+                onClick={goToPrevSlide}
+                aria-label="Попереднє фото"
+              >
+                &#10094;
+              </button>
+              <button
+                type="button"
+                className={`${styles.arrow} ${styles.arrowRight}`}
+                onClick={goToNextSlide}
+                aria-label="Наступне фото"
+              >
+                &#10095;
+              </button>
+
+              <div className={styles.dots} role="tablist" aria-label="Навігація галереї">
+                {images.map((image, index) => (
+                  <button
+                    key={`${image.src}-dot`}
+                    type="button"
+                    className={`${styles.dot} ${index === currentSlide ? styles.dotActive : ''}`}
+                    onClick={(e) => goToSlide(index, e)}
+                    aria-label={`Перейти до фото ${index + 1}`}
+                    aria-selected={index === currentSlide}
+                    role="tab"
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Модальное окно для мобильных устройств - вне секции галереи */}
+      {isModalOpen && isMobile && (
         <div className={styles.modal} onClick={closeModal}>
           <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
             <button onClick={closeModal} className={styles.closeButton}>
@@ -151,24 +188,16 @@ export default function Gallery() {
               </svg>
             </button>
             
-            {/* Индикатор загрузки */}
-            {isLoading && (
-              <div className={styles.loader}>
-                <div className={styles.spinner}></div>
-              </div>
-            )}
-            
             <div className={styles.modalImageWrapper}>
               <img
-                src={selectedImage.src}
-                alt={selectedImage.alt}
+                src={images[currentSlide].src}
+                alt={images[currentSlide].alt}
                 className={styles.modalImage}
-                onLoad={() => setIsLoading(false)}
               />
             </div>
           </div>
         </div>
       )}
-    </section>
+    </>
   );
 }
