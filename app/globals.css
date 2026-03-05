@@ -107,7 +107,7 @@ section {
   box-shadow: 0 4px 6px var(--shadow);
   transition: background 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
   width: 100%;
-  max-width: 100%;
+  max-width: 1440px;
   overflow: hidden;
   box-sizing: border-box;
 }
