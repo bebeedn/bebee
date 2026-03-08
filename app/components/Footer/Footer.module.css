@@ -5,6 +5,7 @@
   color: #ffffff;
   margin: 3rem auto 0;
   padding: 0;
+  flex-shrink: 0;
   border-top: 1px solid #388E3C;
   transition: background 0.3s ease, color 0.3s ease;
   width: 100%;
