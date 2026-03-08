@@ -8,6 +8,7 @@ const nextConfig = {
     dangerouslyAllowSVG: true,
     contentDispositionType: 'attachment',
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+    qualities: [65, 70, 75, 80, 85, 90],
   },
   compress: true,
   poweredByHeader: false,

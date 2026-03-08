@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
 import styles from './AnimatedBee.module.css';
 
 export default function AnimatedBee() {
@@ -16,7 +17,6 @@ export default function AnimatedBee() {
     const ua = navigator.userAgent;
     const safari = /^((?!chrome|android).)*safari/i.test(ua);
     setIsSafari(safari);
-    console.log('AnimatedBee: isSafari =', safari, 'userAgent =', ua);
   }, []);
 
   useEffect(() => {
@@ -58,19 +58,30 @@ export default function AnimatedBee() {
       }
     };
 
-    updateBannerPosition();
-    window.addEventListener('resize', updateBannerPosition);
-
+    let frameId = null;
     const handleScroll = () => {
-      const position = window.pageYOffset;
-      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-      const scrollPercentage = (position / maxScroll) * 100;
-      setScrollPosition(scrollPercentage);
+      if (frameId !== null) {
+        return;
+      }
+
+      frameId = window.requestAnimationFrame(() => {
+        const position = window.pageYOffset;
+        const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollPercentage = maxScroll > 0 ? (position / maxScroll) * 100 : 0;
+        setScrollPosition(scrollPercentage);
+        frameId = null;
+      });
     };
 
-    window.addEventListener('scroll', handleScroll);
+    updateBannerPosition();
+    handleScroll();
+    window.addEventListener('resize', updateBannerPosition, { passive: true });
+    window.addEventListener('scroll', handleScroll, { passive: true });
     
     return () => {
+      if (frameId !== null) {
+        window.cancelAnimationFrame(frameId);
+      }
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('resize', updateBannerPosition);
     };
@@ -118,12 +129,13 @@ export default function AnimatedBee() {
       }}
     >
       {isSafari === true ? (
-        <img
+        <Image
           src="/images/bee_1.png"
           alt="Bee"
+          width={230}
+          height={230}
           className={`${styles.beeImage} ${styles.beeImageAnimated}`}
-          onLoad={() => console.log('Bee image loaded')}
-          onError={(e) => console.error('Bee image failed to load', e)}
+          loading="lazy"
         />
       ) : isSafari === false ? (
         <video
@@ -133,7 +145,7 @@ export default function AnimatedBee() {
           loop
           muted
           playsInline
-          preload="auto"
+          preload="metadata"
         >
           <source src="/images/video_bee.webm" type="video/webm" />
           <source src="/images/video_bee.mp4" type="video/mp4" />

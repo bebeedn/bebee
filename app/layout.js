@@ -15,8 +15,23 @@ export const viewport = {
 };
 
 export default function RootLayout({ children }) {
+  const themeInitScript = `
+    (function() {
+      try {
+        var savedTheme = localStorage.getItem('theme');
+        var theme = savedTheme || 'light';
+        document.documentElement.setAttribute('data-theme', theme);
+      } catch (error) {
+        document.documentElement.setAttribute('data-theme', 'light');
+      }
+    })();
+  `;
+
   return (
-    <html lang="uk">
+    <html lang="uk" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
       <body>
         <Providers>
           {children}

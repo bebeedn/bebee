@@ -1,0 +1,144 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  padding: 20px;
+  backdrop-filter: blur(5px);
+}
+
+.modal {
+  background: var(--card-background);
+  border-radius: 20px;
+  padding: 40px;
+  max-width: 600px;
+  width: 100%;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.closeButton {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.closeButton:hover {
+  background: rgba(255, 140, 0, 0.1);
+  transform: rotate(90deg);
+}
+
+.closeButton img {
+  filter: brightness(0) saturate(100%) invert(48%) sepia(79%) saturate(2476%) hue-rotate(6deg) brightness(98%) contrast(97%);
+}
+
+:global([data-theme='dark']) .closeButton img {
+  filter: brightness(0) saturate(100%) invert(100%);
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-color);
+  margin-bottom: 24px;
+  padding-right: 40px;
+}
+
+:global(html:not([data-theme='dark'])) .title {
+  color: #ffffff;
+}
+
+.content {
+  color: var(--text-secondary);
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+:global(html:not([data-theme='dark'])) .content {
+  color: #ffffff;
+}
+
+.content h3 {
+  color: var(--text-color);
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 20px;
+  margin-bottom: 12px;
+}
+
+:global(html:not([data-theme='dark'])) .content h3 {
+  color: #ffffff;
+}
+
+.content ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 16px 0;
+}
+
+.content li {
+  padding: 8px 0;
+  padding-left: 24px;
+  position: relative;
+}
+
+.content li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #ff8c00;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.content p {
+  margin-bottom: 16px;
+}
+
+@media (max-width: 768px) {
+  .modal {
+    padding: 30px 20px;
+    max-height: 90vh;
+  }
+
+  .title {
+    font-size: 24px;
+  }
+
+  .content {
+    font-size: 15px;
+  }
+
+  .content h3 {
+    font-size: 18px;
+  }
+}

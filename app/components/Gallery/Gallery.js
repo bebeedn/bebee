@@ -14,7 +14,6 @@ export default function Gallery() {
   const autoPlayTimeoutRef = useRef(null);
 
   const images = [
-    
     { src: '/gallery_photo/2026-03-05 15.40.47.jpg', alt: 'Be-Bee School - Галерея' },
     { src: '/gallery_photo/2026-03-05 15.40.56.jpg', alt: 'Be-Bee School - Галерея' },
     { src: '/gallery_photo/2026-03-05 15.41.11.jpg', alt: 'Be-Bee School - Галерея' },
@@ -22,6 +21,25 @@ export default function Gallery() {
     { src: '/gallery_photo/2026-03-05 15.41.24.jpg', alt: 'Be-Bee School - Галерея' },
     { src: '/gallery_photo/2026-03-05 15.41.35.jpg', alt: 'Be-Bee School - Галерея' },
     { src: '/gallery_photo/2026-03-05 15.41.41.jpg', alt: 'Be-Bee School - Галерея' },
+    { src: '/gallery_photo/2026-03-07 17.58.47.jpg', alt: 'Be-Bee School - Галерея' },
+    { src: '/gallery_photo/2026-03-07 17.58.58.jpg', alt: 'Be-Bee School - Галерея' },
+    { src: '/gallery_photo/2026-03-07 17.59.08.jpg', alt: 'Be-Bee School - Галерея' },
+    { src: '/gallery_photo/2026-03-07 18.00.04.jpg', alt: 'Be-Bee School - Галерея' },
+    { src: '/gallery_photo/2026-03-07 18.00.13.jpg', alt: 'Be-Bee School - Галерея' },
+    { src: '/gallery_photo/2026-03-07 18.00.45.jpg', alt: 'Be-Bee School - Галерея' },
+    { src: '/gallery_photo/9T9A5429.jpg', alt: 'Be-Bee School - Галерея' },
+    { src: '/gallery_photo/IMG_0831.jpeg', alt: 'Be-Bee School - Галерея' },
+    { src: '/gallery_photo/IMG_0850.jpeg', alt: 'Be-Bee School - Галерея' },
+    { src: '/gallery_photo/IMG_0864.jpeg', alt: 'Be-Bee School - Галерея' },
+    { src: '/gallery_photo/IMG_0872.jpeg', alt: 'Be-Bee School - Галерея' },
+    { src: '/gallery_photo/IMG_0882.jpeg', alt: 'Be-Bee School - Галерея' },
+    { src: '/gallery_photo/IMG_0905.jpeg', alt: 'Be-Bee School - Галерея' },
+    { src: '/gallery_photo/IMG_0963.jpeg', alt: 'Be-Bee School - Галерея' },
+    { src: '/gallery_photo/IMG_5240.JPG', alt: 'Be-Bee School - Галерея' },
+    { src: '/gallery_photo/YTQ00855.jpg', alt: 'Be-Bee School - Галерея' },
+    { src: '/gallery_photo/YTQ01040.jpg', alt: 'Be-Bee School - Галерея' },
+    { src: '/gallery_photo/YTQ01113.jpg', alt: 'Be-Bee School - Галерея' },
+    { src: '/gallery_photo/YTQ01296.jpg', alt: 'Be-Bee School - Галерея' },
   ];
 
   // Проверка мобильного устройства
@@ -100,14 +118,33 @@ export default function Gallery() {
   };
 
   const handleImageClick = () => {
-    if (isMobile) {
-      setIsModalOpen(true);
-    }
+    // Открываем модальное окно на всех устройствах
+    setIsModalOpen(true);
   };
 
   const closeModal = () => {
     setIsModalOpen(false);
   };
+
+  // Закрытие модального окна по клавише Escape
+  useEffect(() => {
+    const handleEscape = (e) => {
+      if (e.key === 'Escape' && isModalOpen) {
+        closeModal();
+      }
+    };
+
+    if (isModalOpen) {
+      document.addEventListener('keydown', handleEscape);
+      // Блокируем прокрутку страницы когда модальное окно открыто
+      document.body.style.overflow = 'hidden';
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleEscape);
+      document.body.style.overflow = 'unset';
+    };
+  }, [isModalOpen]);
 
   return (
     <>
@@ -133,9 +170,8 @@ export default function Gallery() {
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1440px"
                     className={styles.image}
-                    priority={index === 0}
-                    quality={75}
-                    loading={index === 0 ? 'eager' : 'lazy'}
+                    quality={65}
+                    loading="lazy"
                   />
                 </div>
               ))}
@@ -175,11 +211,11 @@ export default function Gallery() {
         </div>
       </section>
 
-      {/* Модальное окно для мобильных устройств - вне секции галереи */}
-      {isModalOpen && isMobile && (
+      {/* Модальное окно для всех устройств */}
+      {isModalOpen && (
         <div className={styles.modal} onClick={closeModal}>
           <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
-            <button onClick={closeModal} className={styles.closeButton}>
+            <button onClick={closeModal} className={styles.closeButton} aria-label="Закрити">
               <svg className={styles.closeIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
               </svg>
@@ -192,6 +228,26 @@ export default function Gallery() {
                 className={styles.modalImage}
               />
             </div>
+
+            {/* Стрелки навигации в модальном окне */}
+            <button
+              type="button"
+              className={`${styles.arrow} ${styles.arrowLeft}`}
+              onClick={goToPrevSlide}
+              aria-label="Попереднє фото"
+              style={{ zIndex: 100001 }}
+            >
+              &#10094;
+            </button>
+            <button
+              type="button"
+              className={`${styles.arrow} ${styles.arrowRight}`}
+              onClick={goToNextSlide}
+              aria-label="Наступне фото"
+              style={{ zIndex: 100001 }}
+            >
+              &#10095;
+            </button>
           </div>
         </div>
       )}

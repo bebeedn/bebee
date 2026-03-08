@@ -1,0 +1,378 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  flex: 1;
+}
+
+.hero {
+  padding: 100px 0 60px;
+  background: transparent;
+  color: var(--text-color);
+  border: none;
+  position: relative;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.titleWrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.beeBackground {
+  position: absolute;
+  top: 55%;
+  right: -120px;
+  transform: translateY(-50%);
+  width: 160px;
+  height: 160px;
+  z-index: 1;
+  opacity: 1;
+  pointer-events: none;
+}
+
+.beeImage {
+  object-fit: contain;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-color);
+  text-decoration: none;
+  font-size: 16px;
+  margin-bottom: 20px;
+  transition: opacity 0.3s ease;
+}
+
+.backLink:hover {
+  opacity: 0.8;
+}
+
+.backCircle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #ffffff;
+  background-color: transparent;
+  border-radius: 50%;
+  font-size: 20px;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 1px #ffffff;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+:global(html:not([data-theme='dark'])) .backCircle {
+  border: 1px solid #ff8c00;
+  background-color: transparent;
+  box-shadow: 0 0 0 1px #ff8c00;
+  color: #ff8c00;
+}
+
+.backLink:hover .backCircle {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: white;
+}
+
+.title {
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.6));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 2px 10px rgba(255, 255, 255, 0.3);
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+:global(html:not([data-theme='dark'])) .title {
+  background: linear-gradient(135deg, rgba(255, 140, 0, 0.9), rgba(255, 165, 0, 0.7));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 2px 4px rgba(255, 140, 0, 0.3));
+}
+
+.subtitle {
+  font-size: 20px;
+  text-align: center;
+  opacity: 0.95;
+  position: relative;
+  z-index: 2;
+}
+
+.classesSection {
+  padding: 80px 0;
+  background-color: #fefefe;
+}
+
+:global([data-theme='dark']) .classesSection {
+  background-color: var(--card-bg);
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.tab {
+  padding: 1rem 3rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.tab::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: #FF8C00;
+  transition: width 0.3s ease;
+}
+
+.tab:hover {
+  color: var(--text-color);
+}
+
+.tabActive {
+  color: #FF8C00;
+}
+
+.tabActive::after {
+  width: 100%;
+}
+
+:global([data-theme='dark']) .tabActive {
+  color: var(--text-accent);
+}
+
+:global([data-theme='dark']) .tab::after {
+  background: var(--text-accent);
+}
+
+/* Classes Grid */
+.classesGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.classCard {
+  display: flex;
+  align-items: center;
+  background: var(--card-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 4px 20px var(--shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid var(--card-border);
+  padding: 1.5rem;
+  gap: 1.5rem;
+}
+
+.classCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px var(--shadow);
+}
+
+.cardLeft {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.cardRight {
+  flex-shrink: 0;
+}
+
+.classTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-color);
+  margin: 0 0 0.5rem 0;
+  text-align: left;
+}
+
+.classSchedule {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin: 0;
+  text-align: left;
+  line-height: 1.4;
+}
+
+.imageWrapper {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+.image {
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.classCard:hover .image {
+  transform: scale(1.1);
+}
+
+/* ===== MEDIA QUERIES ===== */
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 30px 0 40px;
+  }
+
+  .beeBackground {
+    width: 100px;
+    height: 100px;
+    right: -80px;
+    top: 55%;
+  }
+
+  .backLink .backCircle {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #ffffff;
+    background-color: transparent;
+    font-size: 20px;
+    flex-shrink: 0;
+    box-shadow: 0 0 0 1px #ffffff;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+  
+  :global(html:not([data-theme='dark'])) .backLink .backCircle {
+    border: 1px solid #ff8c00;
+    background-color: transparent;
+    box-shadow: 0 0 0 1px #ff8c00;
+    color: #ff8c00;
+  }
+
+  .title {
+    font-size: 32px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+  }
+
+  .classesSection {
+    padding: 40px 0;
+  }
+
+  .tabs {
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .tab {
+    padding: 0.75rem 1.5rem;
+    font-size: 1.1rem;
+  }
+
+  .classesGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .classCard {
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .classTitle {
+    font-size: 1.25rem;
+  }
+
+  .classSchedule {
+    font-size: 0.875rem;
+  }
+
+  .imageWrapper {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+@media (max-width: 480px) {
+  .tab {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+  }
+
+  .classCard {
+    flex-direction: column;
+    text-align: center;
+    padding: 1.5rem;
+  }
+
+  .cardLeft {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .classTitle {
+    text-align: center;
+    font-size: 1.25rem;
+  }
+
+  .classSchedule {
+    text-align: center;
+  }
+
+  .cardRight {
+    width: 100%;
+  }
+
+  .imageWrapper {
+    width: 100%;
+    height: 200px;
+  }
+}

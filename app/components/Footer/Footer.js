@@ -6,46 +6,101 @@ export default function Footer() {
       {/* Google карта на всю ширину */}
       <div className={styles.mapContainer}>
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2540.637739718634!2d30.523398776950654!3d50.450441071593394!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4ce50d0c8e3c1%3A0x2e3e3e3e3e3e3e3e!2sKyiv%2C%20Ukraine!5e0!3m2!1sen!2sus!4v1234567890123!5m2!1sen!2sus"
+          src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=Дніпро,+вул.+Європейська+7а&center=48.465,35.045&zoom=14"
           width="100%"
           height="400"
           style={{ border: 0 }}
           allowFullScreen=""
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
-          title="Розташування Be-Bee School"
+          title="Розташування Be-Bee School та Садочок"
         ></iframe>
         
-        {/* Кнопка проложить маршрут */}
-        <a 
-          href="https://www.google.com/maps/dir/?api=1&destination=50.450441,30.523399"
-          target="_blank"
-          rel="noopener noreferrer"
-          className={styles.routeButton}
-        >
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
-            <path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z" />
-          </svg>
-          Проложити маршрут
-        </a>
+        {/* Кнопки для маршрутів */}
+        <div className={styles.routeButtons}>
+          <a 
+            href="https://www.google.com/maps/dir/?api=1&destination=Дніпро,+вул.+Європейська+7а"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.routeButton}
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
+              <path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z" />
+            </svg>
+            Школа
+          </a>
+          <a 
+            href="https://www.google.com/maps/dir/?api=1&destination=Дніпро,+вул.+Європейська+20а"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.routeButton}
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
+              <path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z" />
+            </svg>
+            Садочок
+          </a>
+        </div>
       </div>
 
       <div className={styles.container}>
         <div className={styles.content}>
           <div className={styles.info}>
-            <h3 className={styles.title}>Be-Bee</h3>
-            <p className={styles.text}>
-              Приватна школа<br />
-              Якісна освіта для вашої дитини
-            </p>
+            <div>
+              <h3 className={styles.title}>Be-Bee</h3>
+              <p className={styles.text}>
+                Приватна школа<br />
+                Якісна освіта для вашої дитини
+              </p>
+            </div>
+            <a 
+              href="/images/Договір 2026 новий.docx" 
+              download="Договір оферти BE-BEE.docx"
+              className={styles.contractButton}
+            >
+              📄 Договір оферти
+            </a>
           </div>
 
           <div className={styles.contacts}>
             <h4 className={styles.subtitle}>Контакти</h4>
             <p className={styles.contact}>
-              <span>📞</span> <a href="tel:+380991924620">+38 (099) 192 46 20</a>
+              <span>📞</span> <a href="tel:+380509400770">+38 (050) 940-07-70</a>
             </p>
+            <p className={styles.contact}>
+              <span>📍</span> Дніпро, вул. Європейська 7а (Школа)
+            </p>
+            <p className={styles.contact}>
+              <span>📍</span> Дніпро, вул. Європейська 20а (Сад)
+            </p>
+            <div className={styles.socialLinks}>
+              <a 
+                href="https://www.instagram.com/bebee.school?igsh=MXFrazI0Y3l6aDBoMA%3D%3D&utm_source=qr" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className={styles.socialLink}
+                aria-label="Instagram Школа"
+              >
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+                <span>Школа</span>
+              </a>
+              <a 
+                href="https://www.instagram.com/be.bee_sadik?igsh=MTJtazZhZTBmMzRxaA%3D%3D&utm_source=qr" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className={styles.socialLink}
+                aria-label="Instagram Садочок"
+              >
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+                <span>Садочок</span>
+              </a>
+            </div>
           </div>
         </div>
 

@@ -50,8 +50,11 @@ export default function AboutSection() {
             className={styles.video}
             controls
             poster="/images/main.png"
+            preload="none"
+            playsInline
           >
-            <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
+            <source src="/images/video_bee.webm" type="video/webm" />
+            <source src="/images/video_bee.mp4" type="video/mp4" />
             Ваш браузер не підтримує відео.
           </video>
         </div>

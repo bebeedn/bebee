@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import ThemeToggle from '../ThemeToggle/ThemeToggle';
 import styles from './Header.module.css';
 
@@ -11,26 +12,6 @@ export default function Header({ onOpenModal }) {
 
   // Обработка скролла для sticky header
   useEffect(() => {
-    // Создаем элемент-триггер
-    const trigger = document.createElement('div');
-    trigger.style.position = 'absolute';
-    trigger.style.top = '200px';
-    trigger.style.height = '1px';
-    trigger.style.width = '100%';
-    trigger.style.pointerEvents = 'none';
-    document.body.appendChild(trigger);
-
-    // Используем Intersection Observer
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsStickyVisible(!entry.isIntersecting);
-      },
-      { threshold: 0 }
-    );
-
-    observer.observe(trigger);
-
-    // Также оставляем scroll listener как fallback
     let ticking = false;
     const handleScroll = () => {
       if (!ticking) {
@@ -45,11 +26,10 @@ export default function Header({ onOpenModal }) {
       }
     };
 
+    handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
     
     return () => {
-      observer.disconnect();
-      document.body.removeChild(trigger);
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
@@ -63,11 +43,11 @@ export default function Header({ onOpenModal }) {
   };
 
   const menuItems = [
-    { href: '#about', label: 'Про нас' },
-    { href: '#kindergarten', label: 'Садочок' },
-    { href: '#school', label: 'Школа' },
-    { href: '#sections', label: 'Додаткові заняття' },
-    { href: '#contacts', label: 'Контакти' },
+    { href: '/#about_us', label: 'Про нас', isExternal: false },
+    { href: '/kindergarten', label: 'Садочок', isExternal: true },
+    { href: '/school', label: 'Школа', isExternal: true },
+    { href: '/additional-classes', label: 'Додаткові заняття', isExternal: true },
+    { href: '/#contacts', label: 'Контакти', isExternal: false },
   ];
 
   return (
@@ -75,21 +55,22 @@ export default function Header({ onOpenModal }) {
       {/* Основной header */}
       <header className={styles.mainHeader}>
         <div className={styles.container}>
-          <a href="#" className={styles.logo}>
+          <Link href="/" className={styles.logo}>
             <Image 
               src="/images/logo_1.png" 
               alt="BE-BEE Logo" 
               width={194}
               height={58}
               priority
-              quality={90}
+              quality={75}
+              style={{ width: '100%', height: 'auto' }}
             />
-          </a>
+          </Link>
 
           {/* Переключатель темы и телефон для десктопа */}
           <div className={styles.rightControls}>
             <ThemeToggle />
-            <a href="tel:+380991924620" className={styles.phoneDesktop}>
+            <a href="tel:+380509400770" className={styles.phoneDesktop}>
               <Image 
                 src="/images/phone.png" 
                 alt="Phone" 
@@ -140,9 +121,15 @@ export default function Header({ onOpenModal }) {
             <ul className={styles.menu}>
               {menuItems.map((item, index) => (
                 <li key={index} className={styles.menuItem}>
-                  <a href={item.href} className={styles.menuLink} onClick={closeMobileMenu}>
-                    {item.label}
-                  </a>
+                  {item.isExternal ? (
+                    <Link href={item.href} className={styles.menuLink} onClick={closeMobileMenu}>
+                      {item.label}
+                    </Link>
+                  ) : (
+                    <a href={item.href} className={styles.menuLink} onClick={closeMobileMenu}>
+                      {item.label}
+                    </a>
+                  )}
                 </li>
               ))}
               
@@ -160,20 +147,20 @@ export default function Header({ onOpenModal }) {
 
               {/* Телефон в меню для десктопа */}
               <li className={styles.menuItemPhone}>
-                <a href="tel:+380964324325" className={styles.phoneLink}>
+                <a href="tel:+380509400770" className={styles.phoneLink}>
                   <Image 
                     src="/images/phone.png" 
                     alt="Phone" 
                     width={16}
                     height={16}
                   />
-                  <span>+38 (099) 192 46 20</span>
+                  <span>+38 (050) 940-07-70</span>
                 </a>
               </li>
 
               {/* Телефон иконка для мобилки */}
               <li className={styles.menuItemPhoneMobile}>
-                <a href="tel:+380964324325" className={styles.phoneMobile}>
+                <a href="tel:+380509400770" className={styles.phoneMobile}>
                   <Image 
                     src="/images/phone.png" 
                     alt="Phone" 
@@ -190,21 +177,22 @@ export default function Header({ onOpenModal }) {
       {/* Sticky header */}
       <header className={`${styles.stickyHeader} ${isStickyVisible ? styles.stickyVisible : ''}`}>
         <div className={styles.container}>
-          <a href="#" className={styles.logoSmall}>
+          <Link href="/" className={styles.logoSmall}>
             <Image 
               src="/images/logo_1.png" 
               alt="BE-BEE School Logo" 
               width={141}
               height={42}
-              quality={90}
+              quality={75}
               loading="lazy"
+              style={{ width: '100%', height: 'auto' }}
             />
-          </a>
+          </Link>
 
           {/* Правые контролы для мобилки в sticky */}
           <div className={styles.stickyRightControls}>
             <ThemeToggle />
-            <a href="tel:+380991924620" className={styles.stickyPhoneMobile}>
+            <a href="tel:+380509400770" className={styles.stickyPhoneMobile}>
               <Image 
                 src="/images/phone.png" 
                 alt="Phone" 
@@ -237,9 +225,15 @@ export default function Header({ onOpenModal }) {
           <ul className={styles.stickyMenu}>
             {menuItems.map((item, index) => (
               <li key={index}>
-                <a href={item.href} className={styles.stickyMenuLink}>
-                  {item.label}
-                </a>
+                {item.isExternal ? (
+                  <Link href={item.href} className={styles.stickyMenuLink}>
+                    {item.label}
+                  </Link>
+                ) : (
+                  <a href={item.href} className={styles.stickyMenuLink}>
+                    {item.label}
+                  </a>
+                )}
               </li>
             ))}
             <li>

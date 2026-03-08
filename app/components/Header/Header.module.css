@@ -24,12 +24,29 @@
 
 .logo {
   width: 176px;
+  height: auto;
   min-width: 90px;
   transition: transform 0.3s ease;
 }
 
+.logo img {
+  width: 100%;
+  height: auto;
+}
+
 .logo:hover {
   transform: scale(1.05);
+}
+
+.logoSmall {
+  width: 141px;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.logoSmall img {
+  width: 100%;
+  height: auto;
 }
 
 /* ===== BURGER MENU ===== */

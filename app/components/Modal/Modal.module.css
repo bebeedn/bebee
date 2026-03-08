@@ -36,6 +36,13 @@
   transition: background 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
 }
 
+/* Оранжевый стиль для светлой темы */
+:global(html:not([data-theme='dark'])) .modal {
+  background: linear-gradient(135deg, #FFF8F0 0%, #FFE8D6 100%);
+  border: 2px solid #FF8C00;
+  box-shadow: 0 10px 30px rgba(255, 140, 0, 0.3);
+}
+
 .closeBtn {
   position: absolute;
   top: 1.5rem ;
@@ -87,6 +94,11 @@
   transition: color 0.3s ease;
 }
 
+:global(html:not([data-theme='dark'])) .title {
+  color: #D2691E;
+  text-shadow: 0 2px 4px rgba(255, 140, 0, 0.1);
+}
+
 .subtitle {
   text-align: center;
   color: var(--text-secondary);
@@ -114,6 +126,10 @@
   transition: color 0.3s ease;
 }
 
+:global(html:not([data-theme='dark'])) .label {
+  color: #8B4513;
+}
+
 .required {
   color: #dc2626;
 }
@@ -131,11 +147,39 @@
   color: var(--text-color);
 }
 
+:global(html:not([data-theme='dark'])) .input,
+:global(html:not([data-theme='dark'])) .textarea {
+  background: white;
+  border: 2px solid #FFB347;
+  color: #3C3C3B;
+}
+
 .input:focus,
 .textarea:focus {
   outline: none;
   border-color: var(--text-color);
   box-shadow: 0 0 0 3px var(--shadow);
+}
+
+:global(html:not([data-theme='dark'])) .input:focus,
+:global(html:not([data-theme='dark'])) .textarea:focus {
+  border-color: #FF8C00;
+  box-shadow: 0 0 0 3px rgba(255, 140, 0, 0.2);
+}
+
+.inputError {
+  border-color: #dc2626 !important;
+}
+
+.inputError:focus {
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1) !important;
+}
+
+.errorMessage {
+  color: #dc2626;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  display: block;
 }
 
 .textarea {
@@ -157,10 +201,21 @@
   margin-top: 0.5rem;
 }
 
+:global(html:not([data-theme='dark'])) .submitBtn {
+  background: linear-gradient(135deg, #FF8C00 0%, #FFA500 100%);
+  box-shadow: 0 4px 15px rgba(255, 140, 0, 0.3);
+}
+
 .submitBtn:hover:not(:disabled) {
   background: #9a8245;
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(175, 148, 79, 0.3);
+}
+
+:global(html:not([data-theme='dark'])) .submitBtn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #FFA500 0%, #FFB347 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 140, 0, 0.4);
 }
 
 .submitBtn:disabled {
@@ -186,6 +241,11 @@
   font-size: 3rem;
   margin: 0 auto 1.5rem;
   animation: scaleIn 0.5s ease;
+}
+
+:global(html:not([data-theme='dark'])) .successIcon {
+  background: linear-gradient(135deg, #FF8C00 0%, #FFA500 100%);
+  box-shadow: 0 4px 15px rgba(255, 140, 0, 0.3);
 }
 
 @keyframes scaleIn {
