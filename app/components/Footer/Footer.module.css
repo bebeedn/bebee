@@ -15,6 +15,13 @@
   overflow: hidden;
 }
 
+.footer::after {
+  content: '';
+  display: block;
+  height: env(safe-area-inset-bottom, 0px);
+  background: linear-gradient(135deg, #1B5E20 0%, #2E7D32 100%);
+}
+
 /* Контейнер карты */
 .mapContainer {
   width: 100%;
@@ -244,6 +251,7 @@
 
 .bottom {
   text-align: center;
+  padding-bottom: max(0.5rem, env(safe-area-inset-bottom, 0px));
 }
 
 .copyright {

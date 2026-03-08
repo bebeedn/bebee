@@ -480,10 +480,10 @@
   }
 
   .beeBackground {
-    width: 100px;
-    height: 100px;
-    right: -24px;
-    top: 55%;
+    width: 88px;
+    height: 88px;
+    right: -68px;
+    top: 50%;
   }
 
   .backLink .backCircle {
@@ -568,4 +568,9 @@
   .noSubscriptionCard p {
     font-size: 14px;
   }
+}
+@media (max-width: 480px) {
+.title {
+  font-size: 26px;
+}
 }
