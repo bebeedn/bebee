@@ -11,6 +11,153 @@
   overflow-x: clip;
 }
 
+.noticeCard {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 60;
+  max-width: 360px;
+  width: calc(100% - 48px);
+  background: linear-gradient(160deg, rgba(255, 193, 99, 0.98), rgba(255, 140, 0, 0.98));
+  color: #1a1a1a;
+  border-radius: 16px;
+  padding: 18px 18px 16px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22), 0 0 0 2px rgba(255, 204, 120, 0.35),
+    0 0 26px rgba(255, 174, 86, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  animation: noticePop 0.4s ease-out, noticePulse 2.8s ease-in-out 0.6s infinite;
+}
+
+:global([data-theme='dark']) .noticeCard {
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.4);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.noticeHeader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  position: relative;
+}
+
+.noticeBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 22px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #ff2d55, #ff8a00, #ff2d55);
+  background-size: 200% 200%;
+  color: #e3e1e1;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  box-shadow: 0 8px 18px rgba(31, 31, 31, 0.28);
+  animation: badgeGradient 6s ease-in-out infinite;
+}
+
+.noticeClose {
+  border: none;
+  background: rgba(255, 255, 255, 0.3);
+  color: #1a1a1a;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, background 0.2s ease;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.noticeClose:hover {
+  transform: scale(1.05);
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.noticeText {
+  margin: 12px 0 16px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.noticeButton {
+  width: 100%;
+  border: none;
+  background: linear-gradient(135deg, #6a533d, #3a2b1d);
+  color: #fff2dd;
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.noticeButton:hover {
+  transform: translateY(-1px);
+  background: linear-gradient(135deg, #7a5f45, #463322);
+}
+
+@keyframes noticePop {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes noticePulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22), 0 0 0 2px rgba(255, 204, 120, 0.35),
+      0 0 26px rgba(255, 174, 86, 0.35);
+  }
+  50% {
+    transform: scale(1.02);
+    box-shadow: 0 22px 46px rgba(0, 0, 0, 0.26), 0 0 0 4px rgba(255, 210, 140, 0.45),
+      0 0 38px rgba(255, 174, 86, 0.45);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22), 0 0 0 2px rgba(255, 204, 120, 0.35),
+      0 0 26px rgba(255, 174, 86, 0.35);
+  }
+}
+
+@keyframes badgeGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .noticeCard {
+    animation: noticePop 0.4s ease-out;
+  }
+  .noticeBadge {
+    animation: none;
+  }
+}
 .hero {
   padding: 100px 0 60px;
   background: transparent;
@@ -172,6 +319,8 @@
 
 .image {
   object-fit: cover;
+  object-position: top center;
+  border-radius: 16px;
 }
 
 .ctaSection {
@@ -568,9 +717,137 @@
   .noSubscriptionCard p {
     font-size: 14px;
   }
+
+  .noticeCard {
+    right: 16px;
+    bottom: 16px;
+    width: calc(100% - 32px);
+    padding: 16px;
+  }
+
+  .noticeText {
+    font-size: 15px;
+  }
+
+  .noticeButton {
+    font-size: 13px;
+  }
 }
 @media (max-width: 480px) {
 .title {
   font-size: 26px;
 }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .noticeCard {
+    animation: none;
+  }
+}
+
+
+/* Price Section */
+.priceSection {
+  padding: 80px 0;
+  background: #f8f8f8;
+}
+
+:global([data-theme='dark']) .priceSection {
+  background: var(--background);
+}
+
+.priceSection h2 {
+  font-size: 36px;
+  text-align: center;
+  margin-bottom: 60px;
+  color: var(--text-color);
+}
+
+.priceCardsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .priceSection {
+    padding: 40px 0;
+  }
+
+  .priceSection h2 {
+    font-size: 28px;
+    margin-bottom: 30px;
+  }
+
+  .priceCardsGrid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+/* Price Cards in Modal */
+.priceCardsModalGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  align-items: stretch;
+}
+
+.priceCardsModalWrap {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.additionalInfo {
+  grid-column: 1 / -1;
+
+  padding: 20px;
+  background: rgba(255, 140, 0, 0.1);
+  border-radius: 12px;
+  text-align: center;
+}
+
+.additionalInfo h3 {
+  color: var(--text-color);
+  font-size: 18px;
+  font-weight: 600;
+  margin: 15px 0 8px;
+}
+
+.additionalInfo h3:first-child {
+  margin-top: 0;
+}
+
+.additionalInfo p {
+  color: var(--text-secondary);
+  font-size: 15px;
+  margin: 0 0 10px;
+}
+
+@media (max-width: 768px) {
+  .priceCardsModalGrid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .additionalInfo h3 {
+    font-size: 16px;
+  }
+
+  .additionalInfo p {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 969px) {
+  .priceCardsModalWrap {
+    column-span: all;
+    -webkit-column-span: all;
+    width: calc((100% - 40px) / 2);
+    margin-left: auto;
+    margin-right: auto;
+    break-inside: avoid;
+  }
 }

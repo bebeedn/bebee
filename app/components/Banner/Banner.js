@@ -9,8 +9,6 @@ export default function Banner({ onOpenModal }) {
     '/main_carousel/IMG_9176.JPG',
     '/main_carousel/IMG_9177.JPG',
     '/main_carousel/IMG_9178.JPG',
-    '/main_carousel/IMG_9180.JPG',
-    '/main_carousel/IMG_9181.JPG',
   ];
 
   const [currentSlide, setCurrentSlide] = useState(0);

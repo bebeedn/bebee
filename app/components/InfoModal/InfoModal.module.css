@@ -17,13 +17,38 @@
   background: var(--card-background);
   border-radius: 20px;
   padding: 40px;
-  max-width: 600px;
+  max-width: 1200px;
   width: 100%;
-  max-height: 80vh;
+  max-height: 90vh;
   overflow-y: auto;
   position: relative;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
   animation: slideUp 0.3s ease-out;
+}
+
+.modal::-webkit-scrollbar {
+  width: 4px;
+}
+
+.modal::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.modal::-webkit-scrollbar-thumb {
+  background: rgba(255, 140, 0, 0.3);
+  border-radius: 4px;
+}
+
+.modal::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 140, 0, 0.5);
+}
+
+:global([data-theme='dark']) .modal::-webkit-scrollbar-thumb {
+  background: rgba(255, 140, 0, 0.4);
+}
+
+:global([data-theme='dark']) .modal::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 140, 0, 0.6);
 }
 
 @keyframes slideUp {
@@ -69,7 +94,7 @@
   font-size: 28px;
   font-weight: 700;
   color: var(--text-color);
-  margin-bottom: 24px;
+  margin-bottom: 20px;
   padding-right: 40px;
 }
 
@@ -79,8 +104,12 @@
 
 .content {
   color: var(--text-secondary);
-  font-size: 16px;
-  line-height: 1.8;
+  font-size: 15px;
+  line-height: 1.5;
+  columns: 2;
+  column-gap: 40px;
+  max-height: none;
+  overflow: visible;
 }
 
 :global(html:not([data-theme='dark'])) .content {
@@ -89,10 +118,61 @@
 
 .content h3 {
   color: var(--text-color);
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 600;
-  margin-top: 20px;
-  margin-bottom: 12px;
+  margin-top: 0;
+  margin-bottom: 8px;
+  padding-left: 24px;
+  position: relative;
+  break-after: avoid;
+  break-inside: avoid;
+}
+
+.content h3:first-of-type {
+  margin-top: 0;
+}
+
+.content h3 + p {
+  margin-bottom: 40px;
+}
+
+.content h3::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #ff8c00;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.content [data-price-card-title]::before {
+  content: "";
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ff8c00;
+  box-shadow: 0 0 0 0 rgba(255, 140, 0, 0.6);
+  animation: priceCardDotPulse 1.8s ease-out infinite;
+  will-change: box-shadow, opacity;
+}
+
+@keyframes priceCardDotPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 140, 0, 0.6);
+    opacity: 1;
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(255, 140, 0, 0);
+    opacity: 0.9;
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 140, 0, 0);
+    opacity: 1;
+  }
 }
 
 :global(html:not([data-theme='dark'])) .content h3 {
@@ -121,24 +201,162 @@
 }
 
 .content p {
+  margin-bottom: 60px;
+  break-inside: avoid;
+}
+
+.content > p:first-child {
+  column-span: all;
   margin-bottom: 16px;
+  font-size: 15px;
+}
+
+.content > p:nth-child(2) {
+  column-span: all;
+  margin-bottom: 30px;
+  font-weight: 500;
+}
+
+@media (max-width: 1200px) {
+  .modal {
+    max-width: 800px;
+    padding: 35px;
+  }
+
+  .content {
+    font-size: 14px;
+    column-gap: 35px;
+  }
+
+  .content h3 {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 968px) {
+  .modal {
+    max-width: 700px;
+    padding: 30px;
+    overflow-y: auto;
+  }
+
+  .content {
+    columns: 1;
+    font-size: 15px;
+    max-height: none;
+    overflow-y: visible;
+  }
+
+  .content h3 {
+    font-size: 16px;
+  }
+
+  .content h3 + p {
+    margin-bottom: 30px;
+  }
 }
 
 @media (max-width: 768px) {
   .modal {
-    padding: 30px 20px;
+    padding: 25px 20px;
     max-height: 90vh;
+    max-width: 95%;
+    overflow-y: auto;
   }
 
   .title {
-    font-size: 24px;
+    font-size: 22px;
+    margin-bottom: 16px;
   }
 
   .content {
-    font-size: 15px;
+    font-size: 14px;
+    columns: 1;
+    max-height: none;
+    overflow-y: visible;
   }
 
   .content h3 {
+    font-size: 15px;
+    padding-left: 20px;
+  }
+
+  .content h3::before {
+    font-size: 20px;
+  }
+
+  .content h3 + p {
+    margin-bottom: 24px;
+  }
+
+  .content > p:first-child {
+    margin-bottom: 14px;
+    font-size: 14px;
+  }
+
+  .content > p:nth-child(2) {
+    margin-bottom: 24px;
+  }
+
+  .closeButton {
+    top: 15px;
+    right: 15px;
+    padding: 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal {
+    padding: 20px 16px;
+    max-width: 100%;
+    margin: 10px;
+    overflow-y: auto;
+  }
+
+  .title {
+    font-size: 20px;
+    margin-bottom: 14px;
+    padding-right: 35px;
+  }
+
+  .content {
+    font-size: 13px;
+    line-height: 1.6;
+    max-height: none;
+    overflow-y: visible;
+  }
+
+  .content h3 {
+    font-size: 14px;
+    padding-left: 18px;
+    margin-bottom: 6px;
+  }
+
+  .content h3::before {
     font-size: 18px;
+  }
+
+  .content h3 + p {
+    margin-bottom: 20px;
+  }
+
+  .content > p:first-child {
+    margin-bottom: 12px;
+    font-size: 13px;
+  }
+
+  .content > p:nth-child(2) {
+    margin-bottom: 20px;
+  }
+
+  .closeButton {
+    top: 12px;
+    right: 12px;
+    padding: 5px;
+  }
+
+  .closeButton img {
+    width: 20px;
+    height: 20px;
   }
 }
