@@ -154,9 +154,6 @@
   .noticeCard {
     animation: noticePop 0.4s ease-out;
   }
-  .noticeBadge {
-    animation: none;
-  }
 }
 .hero {
   padding: 100px 0 60px;
@@ -737,14 +734,14 @@
 .title {
   font-size: 26px;
 }
-}
-
-@media (prefers-reduced-motion: reduce) {
   .noticeCard {
-    animation: none;
+    right: 12px;
+    bottom: 12px;
+    width: calc(100% - 24px);
+    max-width: 320px;
+    padding: 14px;
   }
 }
-
 
 /* Price Section */
 .priceSection {

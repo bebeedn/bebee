@@ -188,7 +188,7 @@
 }
 
 .submitBtn {
-  background: var(--text-accent);
+  background: linear-gradient(135deg, #FF8C00 0%, #FFA500 100%);
   color: white;
   padding: 0.875rem 1.5rem;
   border-radius: 0.5rem;
@@ -199,6 +199,7 @@
   font-size: 1rem;
   transition: all 0.3s ease;
   margin-top: 0.5rem;
+  box-shadow: 0 4px 15px rgba(255, 140, 0, 0.3);
 }
 
 :global(html:not([data-theme='dark'])) .submitBtn {
@@ -207,9 +208,9 @@
 }
 
 .submitBtn:hover:not(:disabled) {
-  background: #9a8245;
+  background: linear-gradient(135deg, #FFA500 0%, #FFB347 100%);
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(175, 148, 79, 0.3);
+  box-shadow: 0 6px 20px rgba(255, 140, 0, 0.4);
 }
 
 :global(html:not([data-theme='dark'])) .submitBtn:hover:not(:disabled) {
