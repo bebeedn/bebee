@@ -1,0 +1,92 @@
+.card {
+  background: rgba(255, 140, 0, 0.1);
+  border-radius: 20px;
+  padding: 20px 18px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 15px;
+}
+
+.card:hover {
+  
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.infoItem {
+  margin-bottom: 10px;
+}
+
+.infoItem:last-child {
+  margin-bottom: 0;
+}
+
+.infoTitle {
+  color: var(--text-color);
+  font-size: 16px !important;
+  font-weight: 700;
+  margin: 0 0 6px 0 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  position: relative;
+}
+
+.infoTitle::before {
+  content: "•";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -15px;
+  color: #ff8c00;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.infoItemSecond .infoTitle::before {
+  top: 11px;
+}
+
+.infoItemThird .infoTitle::before {
+  top: 10px;
+}
+
+.infoText {
+  color: var(--text-secondary);
+  font-size: 14px;
+  margin: 0 !important;
+  line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+  .card {
+    padding: 18px 15px;
+    min-height: auto;
+  }
+
+  .infoTitle {
+    font-size: 14px !important;
+    margin-bottom: 4px !important;
+  }
+
+  .infoText {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: 15px 12px;
+  }
+
+  .infoTitle {
+    font-size: 13px !important;
+  }
+
+  .infoText {
+    font-size: 12px;
+  }
+}

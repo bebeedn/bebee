@@ -7,6 +7,7 @@ import Link from 'next/link';
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
 import PriceCard from '../components/PriceCard/PriceCard';
+import AdditionalInfoCard from '../components/PriceCard/AdditionalInfoCard';
 import styles from './page.module.css';
 
 const Modal = dynamic(() => import('../components/Modal/Modal'));
@@ -55,7 +56,8 @@ export default function Kindergarten() {
 
   const handleNoticeAction = () => {
     setIsNoticeVisible(false);
-    setIsModalOpen(true);
+    setSelectedGroup(noSubscriptionInfo);
+    setIsInfoModalOpen(true);
   };
 
   const handleOpenInfoModal = (group) => {
@@ -263,14 +265,7 @@ export default function Kindergarten() {
               onDetailsClick={handleOpenModal}
             />
           ))}
-          <div className={styles.additionalInfo}>
-            <h3>Харчування</h3>
-            <p>300 грн/день (оплачується окремо)</p>
-            <h3>Чергова група до 19:00</h3>
-            <p>+100 грн</p>
-            <h3>Додаткові заняття</h3>
-            <p>Спортивна секція • Малювання • Вокал • Фортепіано • Логопед</p>
-          </div>
+          <AdditionalInfoCard />
         </div>
       </div>
     )
@@ -440,7 +435,7 @@ export default function Kindergarten() {
             type="button"
             onClick={handleNoticeAction}
           >
-            Дізнатись
+            Дізнатись вартість
           </button>
         </div>
       )}

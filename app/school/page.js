@@ -176,7 +176,10 @@ export default function School() {
         <section className={`${styles.scheduleSection} ${styles.fadeIn}`} ref={el => sectionsRef.current[5] = el}>
           <div className={styles.container}>
             <h2>Розклад дня</h2>
-            <p className={styles.scheduleIntro}>Школа працює з 8:30. Уроки починаються о 9:30</p>
+            <p className={styles.scheduleIntro}>
+              <span className={styles.scheduleIntroLine}>Школа працює з 8:30. </span>
+              <span className={styles.scheduleIntroLine}> Уроки починаються о 9:30</span>
+            </p>
             <div className={styles.scheduleList}>
               <div className={styles.scheduleItem}>
                 <div className={styles.scheduleTime}>9:00 - 9:30</div>

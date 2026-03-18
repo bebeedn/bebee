@@ -420,6 +420,10 @@
   font-weight: 500;
 }
 
+.scheduleIntroLine {
+  display: inline;
+}
+
 .featuresSection {
   padding: 80px 0;
   background: var(--card-background);
@@ -550,17 +554,13 @@
 .scheduleItem {
   display: flex;
   align-items: center;
-  padding: 14px 18px;
+  gap: 14px;
+  padding: 12px 14px;
   margin-bottom: 10px;
-  background: var(--background-color);
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  transition: transform 0.2s ease;
+  
 }
 
-.scheduleItem:hover {
-  transform: translateX(8px);
-}
+
 
 .scheduleTime {
   font-weight: 600;
@@ -568,14 +568,19 @@
   min-width: 140px;
   font-size: 15px;
   position: relative;
-  padding-left: 18px;
+  padding: 8px 12px 8px 28px;
+  background: rgba(255, 140, 0, 0.08);
+  border: 1px solid rgba(255, 140, 0, 0.3);
+  border-radius: 999px;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.35);
 }
 
 .scheduleTime::before {
   content: "•";
   position: absolute;
-  left: 0;
-  top: -4px;
+  left: 8px;
+  top: 50%;
+  transform: translateY(-50%);
   color: #ff8c00;
   font-size: 18px;
   font-weight: bold;
@@ -584,6 +589,12 @@
 .scheduleActivity {
   color: var(--text-color);
   font-size: 15px;
+  padding: 8px 14px;
+  background: rgba(255, 140, 0, 0.08);
+  border: 1px solid rgba(255, 140, 0, 0.3);
+  border-radius: 999px;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.35);
+  flex: 1 1 auto;
 }
 
 .ctaSection {
@@ -773,6 +784,35 @@
 
   .scheduleIntro {
     font-size: 16px;
+  }
+
+  .scheduleIntroLine {
+    display: block;
+  }
+
+  .scheduleItem {
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 12px;
+  }
+
+  .scheduleTime {
+    min-width: 110px;
+    flex-shrink: 0;
+    font-size: 12px;
+    padding: 6px 8px 6px 22px;
+  }
+
+  .scheduleTime::before {
+    left: 6px;
+    font-size: 14px;
+  }
+
+  .scheduleActivity {
+    font-size: 12px;
+    padding: 6px 10px;
+    flex: 1;
   }
 }
 

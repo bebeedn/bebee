@@ -798,44 +798,10 @@
   margin-top: 20px;
 }
 
-.additionalInfo {
-  grid-column: 1 / -1;
-
-  padding: 20px;
-  background: rgba(255, 140, 0, 0.1);
-  border-radius: 12px;
-  text-align: center;
-}
-
-.additionalInfo h3 {
-  color: var(--text-color);
-  font-size: 18px;
-  font-weight: 600;
-  margin: 15px 0 8px;
-}
-
-.additionalInfo h3:first-child {
-  margin-top: 0;
-}
-
-.additionalInfo p {
-  color: var(--text-secondary);
-  font-size: 15px;
-  margin: 0 0 10px;
-}
-
 @media (max-width: 768px) {
   .priceCardsModalGrid {
     grid-template-columns: 1fr;
     gap: 15px;
-  }
-
-  .additionalInfo h3 {
-    font-size: 16px;
-  }
-
-  .additionalInfo p {
-    font-size: 14px;
   }
 }
 
