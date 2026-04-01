@@ -6,6 +6,7 @@ import styles from './AboutSection.module.css';
 export default function AboutSection() {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
+  const videoRef = useRef(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -28,6 +29,12 @@ export default function AboutSection() {
     };
   }, []);
 
+  const handleVideoEnded = () => {
+    if (videoRef.current) {
+      videoRef.current.load(); // Перезагружает видео и показывает первый кадр
+    }
+  };
+
   return (
     <section 
       className={`${styles.about} ${isVisible ? styles.aboutVisible : ''}`} 
@@ -47,14 +54,14 @@ export default function AboutSection() {
         {/* Видео слева */}
         <div className={styles.videoWrapper}>
           <video 
+            ref={videoRef}
             className={styles.video}
             controls
-            poster="/images/main.png"
-            preload="none"
+            preload="metadata"
             playsInline
+            onEnded={handleVideoEnded}
           >
-            <source src="/images/video_bee.webm" type="video/webm" />
-            <source src="/images/video_bee.mp4" type="video/mp4" />
+            <source src="/04.mp4" type="video/mp4" />
             Ваш браузер не підтримує відео.
           </video>
         </div>

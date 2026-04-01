@@ -3,12 +3,10 @@
   min-height: 100svh;
   display: flex;
   flex-direction: column;
-  overflow-x: clip;
 }
 
 .main {
   flex: 1 0 auto;
-  overflow-x: clip;
 }
 
 .hero {
@@ -246,6 +244,7 @@
   margin: 0;
   text-align: left;
   line-height: 1.4;
+  white-space: pre-line;
 }
 
 .imageWrapper {
@@ -258,11 +257,75 @@
 
 .image {
   object-fit: cover;
+  object-position: top;
   transition: transform 0.3s ease;
 }
 
 .classCard:hover .image {
   transform: scale(1.1);
+}
+
+/* Individual Classes Styles */
+.infoBlock {
+  background: linear-gradient(135deg, #FF8C00, #FFA500);
+  border-radius: 1rem;
+  padding: 1.5rem 2rem;
+  margin-bottom: 2.5rem;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(255, 140, 0, 0.3);
+}
+
+:global([data-theme='dark']) .infoBlock {
+  background: linear-gradient(135deg, rgba(255, 140, 0, 0.2), rgba(255, 165, 0, 0.15));
+  border: 1px solid rgba(255, 140, 0, 0.3);
+}
+
+.infoBlockText {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1.5;
+}
+
+:global([data-theme='dark']) .infoBlockText {
+  color: var(--text-accent);
+}
+
+.individualGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.individualCard {
+  background: var(--card-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 1rem;
+  padding: 2rem 1.5rem;
+  box-shadow: 0 4px 20px var(--shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid var(--card-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 100px;
+}
+
+.individualCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px var(--shadow);
+}
+
+.individualTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-color);
+  margin: 0;
 }
 
 /* ===== MEDIA QUERIES ===== */
@@ -345,6 +408,29 @@
     width: 120px;
     height: 120px;
   }
+
+  .infoBlock {
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .infoBlockText {
+    font-size: 1rem;
+  }
+
+  .individualGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+
+  .individualCard {
+    padding: 1.5rem 1rem;
+    min-height: 80px;
+  }
+
+  .individualTitle {
+    font-size: 1.1rem;
+  }
 }
 
 @media (max-width: 480px) {
@@ -381,8 +467,31 @@
     width: 100%;
     height: 200px;
   }
- .title {
+  
+  .title {
     font-size: 26px;
   }
 
+  .infoBlock {
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .infoBlockText {
+    font-size: 0.95rem;
+  }
+
+  .individualGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .individualCard {
+    padding: 1.25rem 1rem;
+    min-height: 70px;
+  }
+
+  .individualTitle {
+    font-size: 1.05rem;
+  }
 }

@@ -26,54 +26,39 @@ export default function AdditionalClasses() {
     {
       id: 1,
       title: 'Малювання',
-      schedule: 'Понеділок, Середа | 16:00',
-      image: '/gallery_photo/2026-03-05 15.41.11.jpg',
+      schedule: 'Понеділок, Середа | 17:00-18:00',
+      image: '/additional_classes/pens.jpg',
     },
     {
       id: 2,
       title: 'Таквандо',
-      schedule: 'Вівторок, Четвер | 17:00',
-      image: '/gallery_photo/2026-03-05 15.41.24.jpg',
+      schedule: '17:00',
+      image: '/additional_classes/td.jpg',
     },
     {
       id: 3,
       title: 'Джиу-джитсу',
-      schedule: 'Понеділок, П\'ятниця | 18:00',
-      image: '/gallery_photo/2026-03-05 15.41.35.jpg',
+      schedule: 'Понеділок, Середа, П\'ятниця | 16:00-17:00',
+      image: '/additional_classes/dj.jpg',
     },
     {
       id: 4,
       title: 'Шиття',
-      schedule: 'Середа, П\'ятниця | 16:00',
-      image: '/gallery_photo/2026-03-05 15.40.56.jpg',
+      schedule: 'Середа 14:00\nП\'ятниця 16:00',
+      image: '/additional_classes/ch.jpg',
     }
   ];
 
   const individualClasses = [
-    {
-      id: 1,
-      title: 'Англійська мова',
-      schedule: 'Понеділок, Середа, П\'ятниця | 15:00',
-      image: '/gallery_photo/2026-03-05 15.40.47.jpg',
-    },
-    {
-      id: 2,
-      title: 'Музика',
-      schedule: 'Вівторок, Четвер | 16:00',
-      image: '/gallery_photo/2026-03-05 15.41.19.jpg',
-    },
-    {
-      id: 3,
-      title: 'Логопед',
-      schedule: 'За записом',
-      image: '/gallery_photo/2026-03-07 17.58.47.jpg',
-    },
-    {
-      id: 4,
-      title: 'Психолог',
-      schedule: 'За записом',
-      image: '/gallery_photo/2026-03-07 17.58.58.jpg',
-    }
+    { id: 1, title: 'Вокал' },
+    { id: 2, title: 'Барабани' },
+    { id: 3, title: 'Фортепіано' },
+    { id: 4, title: 'Гітара' },
+    { id: 5, title: 'Англійська мова' },
+    { id: 6, title: 'Клуб української мови' },
+    { id: 7, title: 'Логопед' },
+    { id: 8, title: 'Швидкочитання' },
+    { id: 9, title: 'Малювання на планшеті' }
   ];
 
   return (
@@ -153,29 +138,21 @@ export default function AdditionalClasses() {
 
             {/* Individual Classes */}
             {activeTab === 'individual' && (
-              <div className={styles.classesGrid}>
-                {individualClasses.map((item) => (
-                  <div key={item.id} className={styles.classCard}>
-                    <div className={styles.cardLeft}>
-                      <div>
-                        <h3 className={styles.classTitle}>{item.title}</h3>
-                        <p className={styles.classSchedule}>{item.schedule}</p>
-                      </div>
+              <>
+                <div className={styles.infoBlock}>
+                  <p className={styles.infoBlockText}>
+                    Всі заняття відбуваються на поверсі школи/садочка, вчитель сам забирає дитину
+                  </p>
+                </div>
+                
+                <div className={styles.individualGrid}>
+                  {individualClasses.map((item) => (
+                    <div key={item.id} className={styles.individualCard}>
+                      <h3 className={styles.individualTitle}>{item.title}</h3>
                     </div>
-                    <div className={styles.cardRight}>
-                      <div className={styles.imageWrapper}>
-                        <Image
-                          src={item.image}
-                          alt={item.title}
-                          fill
-                          sizes="(max-width: 768px) 50vw, 200px"
-                          className={styles.image}
-                        />
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
+                  ))}
+                </div>
+              </>
             )}
           </div>
         </section>

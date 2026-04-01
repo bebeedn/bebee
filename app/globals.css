@@ -40,9 +40,6 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: 100px;
   transition: background 0.3s ease, color 0.3s ease;
-  overflow-x: hidden;
-  overflow-y: auto;
-  overscroll-behavior-y: none;
   width: 100%;
   max-width: 100vw;
   position: relative;
@@ -54,9 +51,6 @@ body {
   color: var(--text-color);
   line-height: 1.6;
   transition: background 0.3s ease, color 0.3s ease;
-  overflow-x: hidden;
-  overflow-y: auto;
-  overscroll-behavior-y: none;
   width: 100%;
   max-width: 100vw;
   position: relative;
