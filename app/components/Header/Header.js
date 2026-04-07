@@ -58,7 +58,7 @@ export default function Header({ onOpenModal }) {
           <Link href="/" className={styles.logo}>
             <Image 
               src="/images/logo_1.png" 
-              alt="BE-BEE Logo" 
+              alt="BeBee Logo" 
               width={194}
               height={58}
               priority
@@ -180,7 +180,7 @@ export default function Header({ onOpenModal }) {
           <Link href="/" className={styles.logoSmall}>
             <Image 
               src="/images/logo_1.png" 
-              alt="BE-BEE School Logo" 
+              alt="BeBee School Logo" 
               width={141}
               height={42}
               quality={75}

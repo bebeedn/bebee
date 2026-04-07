@@ -13,7 +13,7 @@ export default function Footer() {
           allowFullScreen=""
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
-          title="Розташування Be-Bee School та Садочок"
+          title="Розташування BeBee School та Садочок"
         ></iframe>
         
         {/* Кнопки для маршрутів */}
@@ -49,7 +49,7 @@ export default function Footer() {
         <div className={styles.content}>
           <div className={styles.info}>
             <div>
-              <h3 className={styles.title}>Be-Bee</h3>
+              <h3 className={styles.title}>BeBee</h3>
               <p className={styles.text}>
                 Приватна школа<br />
                 Якісна освіта для вашої дитини
@@ -57,7 +57,7 @@ export default function Footer() {
             </div>
             <a 
               href="/images/Договір 2026 новий.docx" 
-              download="Договір оферти BE-BEE.docx"
+              download="Договір оферти BeBee.docx"
               className={styles.contractButton}
             >
               📄 Договір оферти
@@ -106,7 +106,7 @@ export default function Footer() {
 
         <div className={styles.bottom}>
           <p className={styles.copyright}>
-            © {new Date().getFullYear()} Be-Bee. Всі права захищені.
+            © {new Date().getFullYear()} BeBee. Всі права захищені.
           </p>
         </div>
       </div>

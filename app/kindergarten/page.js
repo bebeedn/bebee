@@ -328,10 +328,10 @@ export default function Kindergarten() {
             </Link>
             <div className={styles.heroContent}>
               <div className={styles.titleWrapper}>
-                <h1 className={styles.title}>Садочок BE-BEE</h1>
+                <h1 className={styles.title}>Садочок BeBee</h1>
                 <div className={styles.beeBackground}>
                   <Image
-                    src="/images/bee_1.png"
+                    src="/images/bee_2S.png"
                     alt="Bee"
                     fill
                     className={styles.beeImage}
@@ -352,7 +352,7 @@ export default function Kindergarten() {
               <div className={styles.aboutText}>
                 <h2>Про наш садочок</h2>
                 <p>
-                  BE-BEE - це сучасний приватний садочок, де кожна дитина отримує індивідуальну увагу 
+                  BeBee - це сучасний приватний садочок, де кожна дитина отримує індивідуальну увагу 
                   та можливість розвиватися у комфортному темпі. Ми створили простір, де діти почуваються 
                   безпечно, щасливо та з радістю пізнають світ.
                 </p>

@@ -82,13 +82,12 @@ export default function School() {
           <div className={styles.container}>
             <div className={styles.aboutContent}>
               <div className={styles.aboutText}>
-                <h2>BeBee School — це простір сильного дитинства</h2>
+                <h2>ВеВее — це не просто навчання</h2>
                 <p>
-                  Приватна школа і сад нового формату, де дитина не просто вчиться — а розкривається.
+                  Це простір, де формуються характер, емоційна стійкість, допитливість і вміння мислити.
                 </p>
                 <p>
-                  Ми створили середовище, в якому поєднуються академічна база, повага до особистості дитини 
-                  та розвиток її природних талантів.
+                  Ми поєднуємо українську програму з сучасними освітніми практиками, щоб дати дітям не лише знання, а й внутрішню опору.
                 </p>
               </div>
               <div className={styles.aboutImage}>
@@ -161,19 +160,7 @@ export default function School() {
           </div>
         </section>
 
-        <section className={`${styles.noGadgetsSection} ${styles.fadeIn}`} ref={el => sectionsRef.current[4] = el}>
-          <div className={styles.container}>
-            <h2>🚫 Антигаджетна школа</h2>
-            <p className={styles.noGadgetsText}>
-              З 8:30 до 18:00 зовсім не можна користуватись телефонами та планшетами.
-            </p>
-            <p>
-              Ми маємо впевненість, що це корисно для діточок, та відсутність гаджетів допомагає їм навчатись.
-            </p>
-          </div>
-        </section>
-
-        <section className={`${styles.scheduleSection} ${styles.fadeIn}`} ref={el => sectionsRef.current[5] = el}>
+        <section className={`${styles.scheduleSection} ${styles.fadeIn}`} ref={el => sectionsRef.current[4] = el}>
           <div className={styles.container}>
             <h2>Розклад дня</h2>
             <p className={styles.scheduleIntro}>
@@ -198,6 +185,18 @@ export default function School() {
                 <div className={styles.scheduleActivity}>Кругозори, екскурсії та кулінарія</div>
               </div>
             </div>
+          </div>
+        </section>
+
+        <section className={`${styles.noGadgetsSection} ${styles.fadeIn}`} ref={el => sectionsRef.current[5] = el}>
+          <div className={styles.container}>
+            <h2>🚫 Антигаджетна школа</h2>
+            <p className={styles.noGadgetsText}>
+              З 8:30 до 18:00 зовсім не можна користуватись телефонами та планшетами.
+            </p>
+            <p>
+              Ми маємо впевненість, що це корисно для діточок, та відсутність гаджетів допомагає їм навчатись.
+            </p>
           </div>
         </section>
 

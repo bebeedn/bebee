@@ -42,7 +42,7 @@ export default function Banner({ onOpenModal }) {
               >
                 <Image
                   src={slide}
-                  alt={`Be-Bee School slide ${index + 1}`}
+                  alt={`BeBee School slide ${index + 1}`}
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1440px"
                   className={styles.image}

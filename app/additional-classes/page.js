@@ -31,7 +31,7 @@ export default function AdditionalClasses() {
     },
     {
       id: 2,
-      title: 'Таквандо',
+      title: 'Таеквон-до',
       schedule: '17:00',
       image: '/additional_classes/td.jpg',
     },
@@ -141,7 +141,7 @@ export default function AdditionalClasses() {
               <>
                 <div className={styles.infoBlock}>
                   <p className={styles.infoBlockText}>
-                    Всі заняття відбуваються на поверсі школи/садочка, вчитель сам забирає дитину
+                    Заняття проходять поки ваша дитина знаходиться у школі чи садочку. Ми цінуємо Ваш час та розклад вашої дитини
                   </p>
                 </div>
                 

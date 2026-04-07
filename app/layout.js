@@ -2,8 +2,8 @@ import "./globals.css";
 import Providers from './components/Providers';
 
 export const metadata = {
-  title: "BE-BEE - Приватна школа",
-  description: "BE-BEE - освітній комплекс з якісною академічною освітою, розвитком здібностей та продуманим режимом дня.",
+  title: "BeBee - Приватна школа",
+  description: "BeBee - освітній комплекс з якісною академічною освітою, розвитком здібностей та продуманим режимом дня.",
   keywords: "приватна школа, школа, початкова школа",
 };
 
