@@ -58,7 +58,7 @@ export default function Header({ onOpenModal }) {
           <Link href="/" className={styles.logo}>
             <Image 
               src="/images/logo_1.png" 
-              alt="BeBee Logo" 
+              alt="BeBee School - приватна школа та садочок у Києві, логотип" 
               width={194}
               height={58}
               priority
@@ -73,7 +73,7 @@ export default function Header({ onOpenModal }) {
             <a href="tel:+380509400770" className={styles.phoneDesktop}>
               <Image 
                 src="/images/phone.png" 
-                alt="Phone" 
+                alt="Телефон BeBee School - зателефонувати" 
                 width={16}
                 height={16}
                 quality={85}
@@ -110,7 +110,7 @@ export default function Header({ onOpenModal }) {
             >
               <Image 
                 src="/images/close.png" 
-                alt="Close" 
+                alt="Закрити меню" 
                 width={32}
                 height={32}
                 quality={85}
@@ -150,7 +150,7 @@ export default function Header({ onOpenModal }) {
                 <a href="tel:+380509400770" className={styles.phoneLink}>
                   <Image 
                     src="/images/phone.png" 
-                    alt="Phone" 
+                    alt="Телефон BeBee School" 
                     width={16}
                     height={16}
                   />
@@ -163,7 +163,7 @@ export default function Header({ onOpenModal }) {
                 <a href="tel:+380509400770" className={styles.phoneMobile}>
                   <Image 
                     src="/images/phone.png" 
-                    alt="Phone" 
+                    alt="Зателефонувати до BeBee School" 
                     width={16}
                     height={16}
                   />
@@ -180,7 +180,7 @@ export default function Header({ onOpenModal }) {
           <Link href="/" className={styles.logoSmall}>
             <Image 
               src="/images/logo_1.png" 
-              alt="BeBee School Logo" 
+              alt="BeBee School - логотип" 
               width={141}
               height={42}
               quality={75}
@@ -195,7 +195,7 @@ export default function Header({ onOpenModal }) {
             <a href="tel:+380509400770" className={styles.stickyPhoneMobile}>
               <Image 
                 src="/images/phone.png" 
-                alt="Phone" 
+                alt="Телефон BeBee School" 
                 width={16}
                 height={16}
               />

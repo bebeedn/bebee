@@ -9,9 +9,12 @@ import Footer from '../components/Footer/Footer';
 import styles from './page.module.css';
 
 const Modal = dynamic(() => import('../components/Modal/Modal'));
+const InfoModal = dynamic(() => import('../components/InfoModal/InfoModal'));
 
 export default function School() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isNoticeVisible, setIsNoticeVisible] = useState(true);
+  const [isInfoModalOpen, setIsInfoModalOpen] = useState(false);
   const sectionsRef = useRef([]);
 
   useEffect(() => {
@@ -48,6 +51,49 @@ export default function School() {
     setIsModalOpen(false);
   };
 
+  const handleOpenInfoModal = () => {
+    setIsInfoModalOpen(true);
+  };
+
+  const handleCloseInfoModal = () => {
+    setIsInfoModalOpen(false);
+  };
+
+  const noGadgetsInfo = {
+    title: '🚫 Антигаджетна школа',
+    content: (
+      <>
+        <p>
+          У BeBee School ми створили простір, вільний від цифрових відволікань. 
+          З 8:30 до 18:00 діти не користуються телефонами та планшетами.
+        </p>
+        <h3>Чому це важливо?</h3>
+        <p>
+          Сучасні дослідження показують, що постійне використання гаджетів негативно впливає 
+          на концентрацію уваги, якість навчання та соціальні навички дітей.
+        </p>
+        <h3>Що ми пропонуємо замість гаджетів:</h3>
+        <ul>
+          <li><strong>Живе спілкування</strong> — діти вчаться взаємодіяти один з одним, розвивають емпатію та комунікативні навички</li>
+          <li><strong>Творчість</strong> — малювання, музика, конструювання розвивають уяву та креативне мислення</li>
+          <li><strong>Активні ігри</strong> — рухливі заняття на свіжому повітрі зміцнюють здоров'я та підвищують настрій</li>
+          <li><strong>Читання книг</strong> — розвиток уяви, словникового запасу та любові до літератури</li>
+          <li><strong>Дослідження світу</strong> — експерименти, екскурсії, практичні заняття</li>
+        </ul>
+        <h3>Результати нашого підходу:</h3>
+        <p>
+          Діти стають більш уважними, краще засвоюють матеріал, активніше спілкуються 
+          з однокласниками та вчителями. Вони вчаться знаходити радість у реальному житті, 
+          а не у віртуальному світі.
+        </p>
+        <p>
+          <strong>Ми віримо:</strong> дитинство — це час для справжніх відкриттів, дружби та розвитку, 
+          а не для екранів та нескінченного скролінгу.
+        </p>
+      </>
+    )
+  };
+
   return (
     <div className={styles.page}>
       <Header onOpenModal={handleOpenModal} />
@@ -64,7 +110,7 @@ export default function School() {
                 <div className={styles.beeBackground}>
                   <Image
                     src="/images/bee_1.png"
-                    alt="Bee"
+                    alt="BeBee School - логотип пчелы, символ приватної школи"
                     fill
                     className={styles.beeImage}
                     loading="lazy"
@@ -93,7 +139,7 @@ export default function School() {
               <div className={styles.aboutImage}>
                 <Image
                   src="/categories_photo/2026-03-05 14.25.12.jpg"
-                  alt="Учні в класі"
+                  alt="Учні BeBee School в класі - приватна початкова школа Київ"
                   fill
                   className={styles.image}
                 />
@@ -188,19 +234,7 @@ export default function School() {
           </div>
         </section>
 
-        <section className={`${styles.noGadgetsSection} ${styles.fadeIn}`} ref={el => sectionsRef.current[5] = el}>
-          <div className={styles.container}>
-            <h2>🚫 Антигаджетна школа</h2>
-            <p className={styles.noGadgetsText}>
-              З 8:30 до 18:00 зовсім не можна користуватись телефонами та планшетами.
-            </p>
-            <p>
-              Ми маємо впевненість, що це корисно для діточок, та відсутність гаджетів допомагає їм навчатись.
-            </p>
-          </div>
-        </section>
-
-        <section className={`${styles.safetySection} ${styles.fadeIn}`} ref={el => sectionsRef.current[6] = el}>
+        <section className={`${styles.safetySection} ${styles.fadeIn}`} ref={el => sectionsRef.current[5] = el}>
           <div className={styles.container}>
             <h2>🛡️ Безпека</h2>
             <div className={styles.safetyFeatures}>
@@ -211,7 +245,7 @@ export default function School() {
           </div>
         </section>
 
-        <section className={`${styles.ctaSection} ${styles.fadeIn}`} ref={el => sectionsRef.current[7] = el}>
+        <section className={`${styles.ctaSection} ${styles.fadeIn}`} ref={el => sectionsRef.current[6] = el}>
           <div className={styles.container}>
             <h2>Запис відкрито</h2>
             <p>У 1, 2, 3, 4 класи нашої школи</p>
@@ -222,8 +256,43 @@ export default function School() {
         </section>
       </main>
 
+      {isNoticeVisible && (
+        <div className={styles.noticeCard} role="status" aria-live="polite">
+          <div className={styles.noticeHeader}>
+            <span className={styles.noticeBadge}>АНТИГАДЖЕТНА ШКОЛА</span>
+            <button
+              className={styles.noticeClose}
+              type="button"
+              onClick={() => setIsNoticeVisible(false)}
+              aria-label="Закрити повідомлення"
+            >
+              ×
+            </button>
+          </div>
+          <p className={styles.noticeText}>
+            З 8:30 до 18:00 зовсім не можна користуватись телефонами та планшетами.
+          </p>
+          <p className={styles.noticeSubtext}>
+            Ми маємо впевненість, що це корисно для діточок, та відсутність гаджетів допомагає їм навчатись.
+          </p>
+          <button
+            className={styles.noticeButton}
+            type="button"
+            onClick={handleOpenInfoModal}
+          >
+            Дізнатись більше
+          </button>
+        </div>
+      )}
+
       <Footer />
       <Modal isOpen={isModalOpen} onClose={handleCloseModal} />
+      <InfoModal 
+        isOpen={isInfoModalOpen} 
+        onClose={handleCloseInfoModal}
+        title={noGadgetsInfo.title}
+        content={noGadgetsInfo.content}
+      />
     </div>
   );
 }

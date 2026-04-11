@@ -76,7 +76,7 @@
 }
 
 .card:hover .title {
-  color: #FF8C00;
+  color: var(--primary-color);
 }
 
 :global([data-theme='dark']) .card:hover .title {

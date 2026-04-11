@@ -31,6 +31,7 @@
   position: relative;
   box-sizing: border-box;
   border-radius: 1.5rem 1.5rem 0 0;
+  background: #f0f0f0;
 }
 
 .mapContainer iframe {
@@ -61,7 +62,7 @@
 }
 
 .routeButton {
-  background: #FF8C00;
+  background: var(--primary-color);
   color: white;
   padding: 0.75rem 1.5rem;
   border-radius: 0.75rem;
@@ -76,7 +77,7 @@
 }
 
 .routeButton:hover {
-  background: #FFA500;
+  background: var(--primary-hover);
   transform: translateY(-2px);
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
 }

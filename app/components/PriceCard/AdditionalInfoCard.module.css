@@ -1,5 +1,5 @@
 .card {
-  background: rgba(255, 140, 0, 0.1);
+  background: rgba(var(--primary-rgb), 0.1);
   border-radius: 20px;
   padding: 20px 18px;
   text-align: center;
@@ -41,7 +41,7 @@
   left: 50%;
   transform: translateX(-50%);
   top: -15px;
-  color: #ff8c00;
+  color: var(--primary-color);
   font-size: 18px;
   font-weight: bold;
 }
@@ -55,7 +55,7 @@
 }
 
 .infoText {
-  color: var(--text-secondary);
+  color: #ffffff;
   font-size: 14px;
   margin: 0 !important;
   line-height: 1.4;

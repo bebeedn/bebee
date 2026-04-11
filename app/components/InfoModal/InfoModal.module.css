@@ -35,20 +35,20 @@
 }
 
 .modal::-webkit-scrollbar-thumb {
-  background: rgba(255, 140, 0, 0.3);
+  background: rgba(var(--primary-rgb), 0.3);
   border-radius: 4px;
 }
 
 .modal::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 140, 0, 0.5);
+  background: rgba(var(--primary-rgb), 0.5);
 }
 
 :global([data-theme='dark']) .modal::-webkit-scrollbar-thumb {
-  background: rgba(255, 140, 0, 0.4);
+  background: rgba(var(--primary-rgb), 0.4);
 }
 
 :global([data-theme='dark']) .modal::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 140, 0, 0.6);
+  background: rgba(var(--primary-rgb), 0.6);
 }
 
 @keyframes slideUp {
@@ -78,7 +78,7 @@
 }
 
 .closeButton:hover {
-  background: rgba(255, 140, 0, 0.1);
+  background: rgba(var(--primary-rgb), 0.1);
   transform: rotate(90deg);
 }
 
@@ -142,7 +142,7 @@
   left: 0;
   top: 50%;
   transform: translateY(-50%);
-  color: #ff8c00;
+  color: var(--primary-color);
   font-size: 24px;
   font-weight: bold;
   line-height: 1;
@@ -154,23 +154,23 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #ff8c00;
-  box-shadow: 0 0 0 0 rgba(255, 140, 0, 0.6);
+  background: var(--primary-color);
+  box-shadow: 0 0 0 0 rgba(var(--primary-rgb), 0.6);
   animation: priceCardDotPulse 1.8s ease-out infinite;
   will-change: box-shadow, opacity;
 }
 
 @keyframes priceCardDotPulse {
   0% {
-    box-shadow: 0 0 0 0 rgba(255, 140, 0, 0.6);
+    box-shadow: 0 0 0 0 rgba(var(--primary-rgb), 0.6);
     opacity: 1;
   }
   70% {
-    box-shadow: 0 0 0 10px rgba(255, 140, 0, 0);
+    box-shadow: 0 0 0 10px rgba(var(--primary-rgb), 0);
     opacity: 0.9;
   }
   100% {
-    box-shadow: 0 0 0 0 rgba(255, 140, 0, 0);
+    box-shadow: 0 0 0 0 rgba(var(--primary-rgb), 0);
     opacity: 1;
   }
 }
@@ -195,7 +195,7 @@
   content: "•";
   position: absolute;
   left: 0;
-  color: #ff8c00;
+  color: var(--primary-color);
   font-size: 20px;
   font-weight: bold;
 }

@@ -332,7 +332,7 @@ export default function Kindergarten() {
                 <div className={styles.beeBackground}>
                   <Image
                     src="/images/bee_2S.png"
-                    alt="Bee"
+                    alt="BeBee - логотип пчелы, символ приватного садочка"
                     fill
                     className={styles.beeImage}
                     loading="lazy"
@@ -364,7 +364,7 @@ export default function Kindergarten() {
               <div className={styles.aboutImage}>
                 <Image
                   src="/categories_photo/2026-03-05 14.25.05.jpg"
-                  alt="Діти в садочку"
+                  alt="Діти в приватному садочку BeBee - комфортна атмосфера та розвиток"
                   fill
                   className={styles.image}
                 />
@@ -387,6 +387,7 @@ export default function Kindergarten() {
                     <h3>{group.title}</h3>
                     <p className={styles.ageGroupAge}>{group.age}</p>
                     {group.subtitle && <p className={styles.ageGroupSubtitle}>{group.subtitle}</p>}
+                    <span className={styles.arrowIcon}>→</span>
                   </div>
                 ))}
               </div>
@@ -397,6 +398,7 @@ export default function Kindergarten() {
                 >
                   <h3>Без абонементів</h3>
                   <p>Сплата за дні коли дитина у садочку</p>
+                  <span className={styles.arrowIcon}>→</span>
                 </div>
               </div>
             </div>
@@ -451,3 +453,4 @@ export default function Kindergarten() {
     </div>
   );
 }
+

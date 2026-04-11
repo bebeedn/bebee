@@ -2,32 +2,48 @@
   /* Светлая тема */
   --bg-color: #F2F0E9;
   --card-bg: #fefefe;
-  --card-border: rgba(255, 165, 0, 0.3);
   --text-color: #3C3C3B;
   --text-secondary: #7D7C78;
   --text-accent: #AF944F;
-  --shadow: rgba(255, 140, 0, 0.2);
-  --toggle-border: #AF944F;
-  --toggle-border-hover: #9a8245;
   --scrollbar-track: #f1f1f1;
   --scrollbar-thumb: #AF944F;
   --scrollbar-thumb-hover: #9a8245;
+  
+  /* Основные цвета бренда */
+  --primary-color: #f7ad3f;
+  --primary-hover: #FFA500;
+  --primary-light: #f7ad3f;
+  --primary-rgb: 244, 189, 66;
+  
+  /* Производные от primary */
+  --card-border: rgba(var(--primary-rgb), 0.3);
+  --shadow: rgba(var(--primary-rgb), 0.2);
+  --toggle-border: #AF944F;
+  --toggle-border-hover: #9a8245;
 }
 
 [data-theme='dark'] {
   /* Темная тема */
   --bg-color: #1a1a1a;
   --card-bg: #2a2a2a;
-  --card-border: rgba(255, 165, 0, 0.3);
   --text-color: #CBD5E1;
   --text-secondary: #CBD5E1;
-  --text-accent: #FF8C00;
-  --shadow: rgba(255, 140, 0, 0.2);
-  --toggle-border: #FF8C00;
-  --toggle-border-hover: #FFA500;
   --scrollbar-track: #2a2a2a;
   --scrollbar-thumb: #423738;
   --scrollbar-thumb-hover: #5a4748;
+  
+  /* Основные цвета бренда */
+  --primary-color: #f4bd42;
+  --primary-hover: #FFA500;
+  --primary-light: #FFB347;
+  --primary-rgb: 244, 189, 66;
+  
+  /* Производные от primary */
+  --card-border: rgba(var(--primary-rgb), 0.3);
+  --text-accent: var(--primary-color);
+  --shadow: rgba(var(--primary-rgb), 0.2);
+  --toggle-border: var(--primary-color);
+  --toggle-border-hover: var(--primary-hover);
 }
 
 * {

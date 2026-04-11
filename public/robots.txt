@@ -1,0 +1,21 @@
+# Robots.txt для BeBee School
+# https://bebee.school
+
+User-agent: *
+Allow: /
+
+# Основні сторінки
+Allow: /school
+Allow: /kindergarten
+Allow: /additional-classes
+
+# Заборонити доступ до технічних файлів
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
+
+# Sitemap
+Sitemap: https://bebee.school/sitemap.xml
+
+# Час очікування між запитами (мілісекунди)
+Crawl-delay: 1

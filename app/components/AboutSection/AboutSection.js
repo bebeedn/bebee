@@ -1,21 +1,27 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
 import styles from './AboutSection.module.css';
 
 export default function AboutSection() {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
-  const videoRef = useRef(null);
+  
+  const slides = [
+    '/main_carousel/IMG_9176.JPG',
+    '/main_carousel/IMG_9177.JPG',
+    '/main_carousel/IMG_9178.JPG',
+  ];
+
+  const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        // Включаем анимацию при входе в зону видимости
-        // Выключаем при выходе
         setIsVisible(entry.isIntersecting);
       },
-      { threshold: 0.1 } // Срабатывает когда 10% компонента видно
+      { threshold: 0.1 }
     );
 
     if (sectionRef.current) {
@@ -29,10 +35,20 @@ export default function AboutSection() {
     };
   }, []);
 
-  const handleVideoEnded = () => {
-    if (videoRef.current) {
-      videoRef.current.load(); // Перезагружает видео и показывает первый кадр
-    }
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 5000);
+
+    return () => clearInterval(intervalId);
+  }, [slides.length]);
+
+  const goToPrevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+  };
+
+  const goToNextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
   };
 
   return (
@@ -51,19 +67,59 @@ export default function AboutSection() {
           </ul>
         </div>
 
-        {/* Видео слева */}
+        {/* Карусель слева */}
         <div className={styles.videoWrapper}>
-          <video 
-            ref={videoRef}
-            className={styles.video}
-            controls
-            preload="metadata"
-            playsInline
-            onEnded={handleVideoEnded}
-          >
-            <source src="/04.mp4" type="video/mp4" />
-            Ваш браузер не підтримує відео.
-          </video>
+          <div className={styles.carouselWrapper}>
+            {slides.map((slide, index) => (
+              <div
+                key={slide}
+                className={`${styles.slide} ${index === currentSlide ? styles.active : ''}`}
+                aria-hidden={index !== currentSlide}
+              >
+                <Image
+                  src={slide}
+                  alt={`BeBee School slide ${index + 1}`}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 600px"
+                  className={styles.image}
+                  priority={index === 0}
+                  quality={80}
+                  loading={index === 0 ? 'eager' : 'lazy'}
+                />
+              </div>
+            ))}
+
+            <button
+              type="button"
+              className={`${styles.arrow} ${styles.arrowLeft}`}
+              onClick={goToPrevSlide}
+              aria-label="Попередній слайд"
+            >
+              &#10094;
+            </button>
+            <button
+              type="button"
+              className={`${styles.arrow} ${styles.arrowRight}`}
+              onClick={goToNextSlide}
+              aria-label="Наступний слайд"
+            >
+              &#10095;
+            </button>
+
+            <div className={styles.dots} role="tablist" aria-label="Навігація каруселі">
+              {slides.map((slide, index) => (
+                <button
+                  key={`${slide}-dot`}
+                  type="button"
+                  className={`${styles.dot} ${index === currentSlide ? styles.dotActive : ''}`}
+                  onClick={() => setCurrentSlide(index)}
+                  aria-label={`Перейти до слайду ${index + 1}`}
+                  aria-selected={index === currentSlide}
+                  role="tab"
+                />
+              ))}
+            </div>
+          </div>
         </div>
 
         {/* Текст справа - средние пункты */}

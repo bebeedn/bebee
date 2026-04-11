@@ -1,3 +1,5 @@
+'use client';
+
 import styles from './Footer.module.css';
 
 export default function Footer() {
@@ -6,12 +8,12 @@ export default function Footer() {
       {/* Google карта на всю ширину */}
       <div className={styles.mapContainer}>
         <iframe
-          src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=Дніпро,+вул.+Європейська+7а&center=48.465,35.045&zoom=14"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2645.4259926894133!2d35.04553357684496!3d48.467542028131575!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40dbe2e86c73ac0d%3A0x5abd31d069ae332e!2z0JXQstGA0L7Qv9C10LnRgdC60LDRjyDRg9C7LiwgN9CQLCDQlNC90LXQv9GALCDQlNC90LXQv9GA0L7Qv9C10YLRgNC-0LLRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCwgNDkwMDA!5e0!3m2!1sru!2sua!4v1775926414654!5m2!1sru!2sua"
           width="100%"
           height="400"
           style={{ border: 0 }}
-          allowFullScreen=""
-          loading="lazy"
+          allowFullScreen={true}
+          loading="eager"
           referrerPolicy="no-referrer-when-downgrade"
           title="Розташування BeBee School та Садочок"
         ></iframe>
@@ -56,7 +58,7 @@ export default function Footer() {
               </p>
             </div>
             <a 
-              href="/images/Договір 2026 новий.docx" 
+              href="/images/Договір 2026 новий.docx" 
               download="Договір оферти BeBee.docx"
               className={styles.contractButton}
             >

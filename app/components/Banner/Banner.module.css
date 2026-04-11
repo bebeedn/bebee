@@ -77,12 +77,20 @@
 .imageWrapper {
   width: 100%;
   height: auto;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 21 / 9;
   margin: 0 auto;
   overflow: hidden;
   position: relative;
   background: transparent;
   line-height: 0;
+}
+
+.video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 0;
 }
 
 .banner .imageWrapper * {
@@ -126,7 +134,7 @@
   border: none;
   border-radius: 999px;
   background: transparent;
-  color: #ff8c00;
+  color: var(--primary-color);
   font-size: 1.2rem;
   line-height: 1;
   cursor: pointer;
@@ -137,7 +145,7 @@
 }
 
 .arrow:hover {
-  color: #ffa500;
+  color: var(--primary-hover);
   transform: translateY(-50%) scale(1.05);
 }
 
@@ -177,7 +185,7 @@
 }
 
 .banner .dots .dotActive {
-  background: #FF8C00;
+  background: var(--primary-color);
   transform: scale(1.12);
 }
 
@@ -206,25 +214,25 @@
 /* Адаптивная высота для разных размеров экрана */
 @media (max-width: 1440px) {
   .imageWrapper {
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 21 / 9;
   }
 }
 
 @media (max-width: 1200px) {
   .imageWrapper {
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 21 / 9;
   }
 }
 
 @media (max-width: 1024px) {
   .imageWrapper {
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 21 / 9;
   }
 }
 
 @media (max-width: 768px) {
   .imageWrapper {
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 21 / 9;
   }
 }
 
@@ -243,7 +251,7 @@
   }
 
   .imageWrapper {
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 21 / 9;
   }
 }
 
@@ -295,7 +303,7 @@
 
 @media (max-width: 480px) {
   .imageWrapper {
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 21 / 9;
   }
 
   .arrow {
@@ -319,6 +327,48 @@
 
 @media (max-width: 375px) {
   .imageWrapper {
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 21 / 9;
+  }
+}
+
+/* Кнопка Play для Safari */
+.playButton {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(244, 189, 66, 0.9);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.playButton:hover {
+  background: rgba(244, 189, 66, 1);
+  transform: translate(-50%, -50%) scale(1.1);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+.playButton svg {
+  margin-left: 4px;
+}
+
+@media (max-width: 768px) {
+  .playButton {
+    width: 64px;
+    height: 64px;
+  }
+  
+  .playButton svg {
+    width: 48px;
+    height: 48px;
   }
 }

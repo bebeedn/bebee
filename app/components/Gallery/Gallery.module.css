@@ -133,7 +133,7 @@
   border: none;
   border-radius: 999px;
   background: transparent;
-  color: #ff8c00;
+  color: var(--primary-color);
   font-size: 2.4rem;
   line-height: 1;
   cursor: pointer;
@@ -144,7 +144,7 @@
 }
 
 .arrow:hover {
-  color: #ffa500;
+  color: var(--primary-hover);
   transform: translateY(-50%) scale(1.05);
 }
 
@@ -184,7 +184,7 @@
 }
 
 .dots .dotActive {
-  background: #FF8C00;
+  background: var(--primary-color);
   transform: scale(1.12);
 }
 
@@ -221,7 +221,7 @@
   top: 4.5rem;
   right: 1.5rem;
   color: white;
-  background: #FF8C00;
+  background: var(--primary-color);
   border: 2px solid white;
   cursor: pointer;
   padding: 0.5rem;
@@ -236,7 +236,7 @@
 }
 
 .modal .closeButton:hover {
-  background: #FFA500;
+  background: var(--primary-hover);
   transform: scale(1.1);
 }
 

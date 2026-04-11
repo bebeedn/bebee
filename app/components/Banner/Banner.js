@@ -1,88 +1,63 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import Image from 'next/image';
+import { useRef, useEffect } from 'react';
 import styles from './Banner.module.css';
 
 export default function Banner({ onOpenModal }) {
-  const slides = [
-    '/main_carousel/IMG_9176.JPG',
-    '/main_carousel/IMG_9177.JPG',
-    '/main_carousel/IMG_9178.JPG',
-  ];
-
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const videoRef = useRef(null);
 
   useEffect(() => {
-    const intervalId = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 5000);
+    const video = videoRef.current;
+    if (!video) return;
 
-    return () => clearInterval(intervalId);
-  }, [slides.length]);
+    // Агрессивная попытка запуска для Safari
+    video.muted = true;
+    video.defaultMuted = true;
+    video.volume = 0;
+    video.playsInline = true;
+    
+    // Пробуем запустить сразу
+    const attemptPlay = () => {
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          // Если не получилось, пробуем еще раз через 100ms
+          setTimeout(() => {
+            video.play().catch(() => {});
+          }, 100);
+        });
+      }
+    };
 
-  const goToPrevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
-  };
+    // Запускаем когда видео готово
+    if (video.readyState >= 3) {
+      attemptPlay();
+    } else {
+      video.addEventListener('canplay', attemptPlay, { once: true });
+    }
 
-  const goToNextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % slides.length);
-  };
+    return () => {
+      video.removeEventListener('canplay', attemptPlay);
+    };
+  }, []);
 
   return (
     <section className={styles.banner}>
       <div className={styles.container}>
         <div className={styles.content}>
           <div className={styles.imageWrapper}>
-            {slides.map((slide, index) => (
-              <div
-                key={slide}
-                className={`${styles.slide} ${index === currentSlide ? styles.active : ''}`}
-                aria-hidden={index !== currentSlide}
-              >
-                <Image
-                  src={slide}
-                  alt={`BeBee School slide ${index + 1}`}
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1440px"
-                  className={styles.image}
-                  priority={index === 0}
-                  quality={80}
-                  loading={index === 0 ? 'eager' : 'lazy'}
-                />
-              </div>
-            ))}
-
-            <button
-              type="button"
-              className={`${styles.arrow} ${styles.arrowLeft}`}
-              onClick={goToPrevSlide}
-              aria-label="Попередній слайд"
+            <video 
+              ref={videoRef}
+              className={styles.video}
+              autoPlay
+              muted
+              playsInline
+              loop
+              preload="auto"
             >
-              &#10094;
-            </button>
-            <button
-              type="button"
-              className={`${styles.arrow} ${styles.arrowRight}`}
-              onClick={goToNextSlide}
-              aria-label="Наступний слайд"
-            >
-              &#10095;
-            </button>
-
-            <div className={styles.dots} role="tablist" aria-label="Навігація каруселі">
-              {slides.map((slide, index) => (
-                <button
-                  key={`${slide}-dot`}
-                  type="button"
-                  className={`${styles.dot} ${index === currentSlide ? styles.dotActive : ''}`}
-                  onClick={() => setCurrentSlide(index)}
-                  aria-label={`Перейти до слайду ${index + 1}`}
-                  aria-selected={index === currentSlide}
-                  role="tab"
-                />
-              ))}
-            </div>
+              <source src="/04.mp4" type="video/mp4" />
+              Ваш браузер не підтримує відео.
+            </video>
           </div>
         </div>
       </div>

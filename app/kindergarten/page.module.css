@@ -19,7 +19,7 @@
   --notice-x: 0%;
   max-width: 360px;
   width: calc(100% - 48px);
-  background: linear-gradient(160deg, rgba(255, 193, 99, 0.98), rgba(255, 140, 0, 0.98));
+  background: linear-gradient(160deg, rgba(255, 193, 99, 0.98), rgba(var(--primary-rgb), 0.98));
   color: #1a1a1a;
   border-radius: 16px;
   padding: 18px 18px 16px;
@@ -231,10 +231,10 @@
 }
 
 :global(html:not([data-theme='dark'])) .backCircle {
-  border: 1px solid #ff8c00;
+  border: 1px solid var(--primary-color);
   background-color: transparent;
-  box-shadow: 0 0 0 1px #ff8c00;
-  color: #ff8c00;
+  box-shadow: 0 0 0 1px var(--primary-color);
+  color: var(--primary-color);
 }
 
 .backLink:hover .backCircle {
@@ -259,11 +259,11 @@
 }
 
 :global(html:not([data-theme='dark'])) .title {
-  background: linear-gradient(135deg, rgba(255, 140, 0, 0.9), rgba(255, 165, 0, 0.7));
+  background: linear-gradient(135deg, rgba(var(--primary-rgb), 0.9), rgba(var(--primary-rgb), 0.7));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  filter: drop-shadow(0 2px 4px rgba(255, 140, 0, 0.3));
+  filter: drop-shadow(0 2px 4px rgba(var(--primary-rgb), 0.3));
 }
 
 .subtitle {
@@ -343,9 +343,9 @@
 
 .ctaButton {
   padding: 16px 48px;
-  background: #FF8C00;
+  background: var(--primary-color);
   color: #fff;
-  border: 1px solid #FF8C00;
+  border: 1px solid var(--primary-color);
   border-radius: 8px;
   font-size: 18px;
   font-weight: 600;
@@ -357,8 +357,8 @@
 }
 
 .ctaButton:hover {
-  background: #FFA500;
-  border-color: #FFA500;
+  background: var(--primary-hover);
+  border-color: var(--primary-hover);
   transform: translateY(-2px);
   box-shadow: 0 10px 18px var(--shadow), inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
@@ -409,30 +409,78 @@
 }
 
 .ageGroupCard {
-  background: var(--card-bg);
+  background: rgba(var(--primary-rgb), 0.15);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   padding: 24px 32px;
   border-radius: 16px;
-  border: 1px solid #ECECEC;
+  border: 1px solid rgba(var(--primary-rgb), 0.3);
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 4px 6px var(--shadow);
+  position: relative;
+}
+
+:global([data-theme='dark']) .ageGroupCard {
+  background: var(--card-bg);
+  border-color: var(--card-border);
 }
 
 .ageGroupCard:hover {
   transform: translateX(8px);
-  border-color: #ff8c00;
+  border-color: var(--primary-color);
   box-shadow: 0 8px 16px rgba(46, 46, 46, 0.12);
-}
-
-:global([data-theme='dark']) .ageGroupCard {
-  border-color: var(--card-border);
 }
 
 :global([data-theme='dark']) .ageGroupCard:hover {
   border-color: var(--text-accent);
   box-shadow: 0 12px 24px var(--shadow);
+}
+
+/* Стрелка в кружочке */
+.arrowIcon {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(var(--primary-rgb), 0.3);
+  animation: arrowPulse 2s ease-in-out infinite;
+  transition: all 0.3s ease;
+}
+
+:global([data-theme='dark']) .arrowIcon {
+  background: var(--text-accent);
+  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.2);
+}
+
+@keyframes arrowPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 2px 8px rgba(var(--primary-rgb), 0.3);
+  }
+  50% {
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(var(--primary-rgb), 0.5);
+  }
+}
+
+.ageGroupCard:hover .arrowIcon {
+  transform: scale(1.15);
+  background: var(--primary-hover);
+  animation: none;
+}
+
+:global([data-theme='dark']) .ageGroupCard:hover .arrowIcon {
+  background: var(--toggle-border-hover);
 }
 
 .ageGroupCard h3 {
@@ -444,7 +492,7 @@
 
 .ageGroupAge {
   font-size: 16px;
-  color: #ff8c00;
+  color: var(--primary-color);
   font-weight: 600;
   margin: 0;
 }
@@ -456,23 +504,42 @@
 }
 
 .noSubscriptionCard {
-  background: var(--card-bg);
+  background: rgba(var(--primary-rgb), 0.25);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   padding: 32px;
   border-radius: 16px;
-  border: 1px solid #ff8c00;
+  border: 2px solid var(--primary-color);
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 4px 6px var(--shadow);
   width: 100%;
   text-align: center;
+  animation: pulse 2s ease-in-out infinite;
+  position: relative;
+}
+
+:global([data-theme='dark']) .noSubscriptionCard {
+  background: var(--card-bg);
+  border: 1px solid var(--text-accent);
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 4px 6px var(--shadow);
+  }
+  50% {
+    transform: scale(1.02);
+    box-shadow: 0 8px 20px rgba(var(--primary-rgb), 0.4);
+  }
 }
 
 .noSubscriptionCard:hover {
   transform: translateY(-8px);
   box-shadow: 0 8px 16px rgba(46, 46, 46, 0.12);
-  border-color: #ffa500;
+  border-color: var(--primary-hover);
+  animation: none;
 }
 
 :global([data-theme='dark']) .noSubscriptionCard {
@@ -482,6 +549,22 @@
 :global([data-theme='dark']) .noSubscriptionCard:hover {
   border-color: var(--text-accent);
   box-shadow: 0 12px 24px var(--shadow);
+}
+
+.noSubscriptionCard .arrowIcon {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+}
+
+.noSubscriptionCard:hover .arrowIcon {
+  transform: scale(1.15);
+  background: var(--primary-hover);
+  animation: none;
+}
+
+:global([data-theme='dark']) .noSubscriptionCard:hover .arrowIcon {
+  background: var(--toggle-border-hover);
 }
 
 .noSubscriptionCard h3 {
@@ -504,17 +587,17 @@
 }
 
 .ageGroupsCta .ctaButton {
-  background: #FF8C00;
+  background: var(--primary-color);
   color: #fff;
-  border: 1px solid #FF8C00;
+  border: 1px solid var(--primary-color);
   text-transform: uppercase;
   letter-spacing: 0.02em;
   box-shadow: 0 6px 14px var(--shadow), inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 .ageGroupsCta .ctaButton:hover {
-  background: #FFA500;
-  border-color: #FFA500;
+  background: var(--primary-hover);
+  border-color: var(--primary-hover);
   box-shadow: 0 10px 18px var(--shadow), inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
@@ -643,10 +726,10 @@
   }
   
   :global(html:not([data-theme='dark'])) .backLink .backCircle {
-    border: 1px solid #ff8c00;
+    border: 1px solid var(--primary-color);
     background-color: transparent;
-    box-shadow: 0 0 0 1px #ff8c00;
-    color: #ff8c00;
+    box-shadow: 0 0 0 1px var(--primary-color);
+    color: var(--primary-color);
   }
 
   .title {
@@ -699,6 +782,14 @@
 
   .ageGroupAge {
     font-size: 15px;
+  }
+
+  .arrowIcon {
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+    bottom: 12px;
+    right: 12px;
   }
 
   .noSubscriptionCard {
