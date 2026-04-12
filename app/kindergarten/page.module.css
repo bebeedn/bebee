@@ -3,12 +3,14 @@
   min-height: 100svh;
   display: flex;
   flex-direction: column;
-  overflow-x: hidden;
+  overflow-x: clip;
+  -webkit-overflow-scrolling: touch;
 }
 
 .main {
   flex: 1 0 auto;
-  overflow-x: hidden;
+  overflow-x: clip;
+  -webkit-overflow-scrolling: touch;
 }
 
 .noticeCard {
@@ -733,6 +735,18 @@
 /* ===== MEDIA QUERIES ===== */
 
 @media (max-width: 768px) {
+  .page {
+    overflow-y: auto;
+    overflow-x: clip;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: contain;
+  }
+
+  .main {
+    overflow-x: clip;
+    overflow-y: visible;
+  }
+
   .hero {
     padding: 30px 0 40px;
     overflow-x: clip;
@@ -826,14 +840,17 @@
 
   .noSubscriptionCard {
     padding: 24px;
+    text-align: left;
   }
 
   .noSubscriptionCard h3 {
     font-size: 20px;
+    text-align: center;
   }
 
   .noSubscriptionCard p {
     font-size: 14px;
+    text-align: left;
   }
 
   .noticeCard {
