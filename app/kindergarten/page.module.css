@@ -3,12 +3,12 @@
   min-height: 100svh;
   display: flex;
   flex-direction: column;
-  overflow-x: clip;
+  overflow-x: hidden;
 }
 
 .main {
   flex: 1 0 auto;
-  overflow-x: clip;
+  overflow-x: hidden;
 }
 
 .noticeCard {
@@ -832,6 +832,44 @@
     padding: 14px;
     --notice-x: -50%;
     transform: translateX(-50%);
+  }
+}
+
+/* iOS Safari stability guard:
+   `backdrop-filter` + continuous animations on multiple cards can crash tabs on iPhone. */
+@supports (-webkit-touch-callout: none) {
+  @media (max-width: 1024px) {
+    .ageGroupCard,
+    .noSubscriptionCard {
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      background: rgba(var(--primary-rgb), 0.2);
+    }
+
+    .noticeCard,
+    .noticeBadge,
+    .arrowIcon,
+    .noSubscriptionCard {
+      animation: none;
+    }
+
+    .noticeCard {
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
+      will-change: auto;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .noticeCard,
+  .noticeBadge,
+  .arrowIcon,
+  .noSubscriptionCard {
+    animation: none;
+  }
+
+  .fadeIn {
+    transition: none;
   }
 }
 
