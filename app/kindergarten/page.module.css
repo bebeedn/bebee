@@ -454,6 +454,7 @@
   font-weight: bold;
   box-shadow: 0 2px 8px rgba(var(--primary-rgb), 0.3);
   animation: arrowPulse 2s ease-in-out infinite;
+  -webkit-animation: arrowPulse 2s ease-in-out infinite;
   transition: all 0.3s ease;
 }
 
@@ -465,9 +466,24 @@
 @keyframes arrowPulse {
   0%, 100% {
     transform: scale(1);
+    -webkit-transform: scale(1);
     box-shadow: 0 2px 8px rgba(var(--primary-rgb), 0.3);
   }
   50% {
+    transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(var(--primary-rgb), 0.5);
+  }
+}
+
+@-webkit-keyframes arrowPulse {
+  0%, 100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    box-shadow: 0 2px 8px rgba(var(--primary-rgb), 0.3);
+  }
+  50% {
+    -webkit-transform: scale(1.1);
     transform: scale(1.1);
     box-shadow: 0 4px 12px rgba(var(--primary-rgb), 0.5);
   }
@@ -516,6 +532,7 @@
   width: 100%;
   text-align: center;
   animation: pulse 2s ease-in-out infinite;
+  -webkit-animation: pulse 2s ease-in-out infinite;
   position: relative;
 }
 
@@ -527,9 +544,24 @@
 @keyframes pulse {
   0%, 100% {
     transform: scale(1);
+    -webkit-transform: scale(1);
     box-shadow: 0 4px 6px var(--shadow);
   }
   50% {
+    transform: scale(1.02);
+    -webkit-transform: scale(1.02);
+    box-shadow: 0 8px 20px rgba(var(--primary-rgb), 0.4);
+  }
+}
+
+@-webkit-keyframes pulse {
+  0%, 100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    box-shadow: 0 4px 6px var(--shadow);
+  }
+  50% {
+    -webkit-transform: scale(1.02);
     transform: scale(1.02);
     box-shadow: 0 8px 20px rgba(var(--primary-rgb), 0.4);
   }
@@ -847,12 +879,12 @@
   }
 }
 
+/* Отключаем анимации только если пользователь явно запросил это в настройках системы */
 @media (prefers-reduced-motion: reduce) {
   .noticeCard,
-  .noticeBadge,
-  .arrowIcon,
-  .noSubscriptionCard {
+  .noticeBadge {
     animation: none;
+    -webkit-animation: none;
   }
 
   .fadeIn {
