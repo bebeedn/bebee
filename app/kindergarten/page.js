@@ -54,11 +54,6 @@ export default function Kindergarten() {
     setIsModalOpen(false);
   };
 
-  const handleNoticeAction = () => {
-    setIsNoticeVisible(false);
-    setIsInfoModalOpen(true);
-  };
-
   const handleOpenInfoModal = (group) => {
     setSelectedGroup(group);
     setIsInfoModalOpen(true);
@@ -107,30 +102,30 @@ export default function Kindergarten() {
     }
   ];
 
-  const noSubscriptionInfo = {
-    title: 'Вартість перебування у садочку',
-    content: (
-      <div className={styles.priceCardsModalWrap}>
-        <div className={styles.priceCardsModalGrid}>
-          {priceCards.map((card) => (
-            <PriceCard
-              key={card.id}
-              title={card.title}
-              age={card.age}
-              halfDay={card.halfDay}
-              fullDay={card.fullDay}
-              onDetailsClick={handleOpenModal}
-            />
-          ))}
-          <AdditionalInfoCard />
-        </div>
-      </div>
-    )
-  };
-
   const handleNoticeActionWithInfo = () => {
     setIsNoticeVisible(false);
-    setSelectedGroup(noSubscriptionInfo);
+    // Создаем объект прямо здесь, чтобы избежать проблем с замыканиями
+    const priceInfo = {
+      title: 'Вартість перебування у садочку',
+      content: (
+        <div className={styles.priceCardsModalWrap}>
+          <div className={styles.priceCardsModalGrid}>
+            {priceCards.map((card) => (
+              <PriceCard
+                key={card.id}
+                title={card.title}
+                age={card.age}
+                halfDay={card.halfDay}
+                fullDay={card.fullDay}
+                onDetailsClick={handleOpenModal}
+              />
+            ))}
+            <AdditionalInfoCard />
+          </div>
+        </div>
+      )
+    };
+    setSelectedGroup(priceInfo);
     setIsInfoModalOpen(true);
   };
 
