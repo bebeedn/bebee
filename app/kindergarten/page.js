@@ -394,7 +394,7 @@ export default function Kindergarten() {
               <div className={styles.ageGroupsRight}>
                 <div 
                   className={styles.noSubscriptionCard}
-                  onClick={() => handleOpenInfoModal(noSubscriptionInfo)}
+                  onClick={handleNoticeActionWithInfo}
                 >
                   <h3>Без абонементів</h3>
                   <p>Сплата за дні коли дитина у садочку</p>
