@@ -56,7 +56,6 @@ export default function Kindergarten() {
 
   const handleNoticeAction = () => {
     setIsNoticeVisible(false);
-    setSelectedGroup(noSubscriptionInfo);
     setIsInfoModalOpen(true);
   };
 
@@ -68,6 +67,71 @@ export default function Kindergarten() {
   const handleCloseInfoModal = () => {
     setIsInfoModalOpen(false);
     setSelectedGroup(null);
+  };
+
+  const priceCards = [
+    {
+      id: 1,
+      title: 'Ясла',
+      age: '1.5-2.5 роки',
+      halfDay: '500 грн',
+      fullDay: '600 грн'
+    },
+    {
+      id: 2,
+      title: 'Молодша група',
+      age: '3-4 роки',
+      halfDay: '500 грн',
+      fullDay: '600 грн'
+    },
+    {
+      id: 3,
+      title: 'Середня група',
+      age: '4 роки',
+      halfDay: '550 грн',
+      fullDay: '650 грн'
+    },
+    {
+      id: 4,
+      title: 'Старша група',
+      age: '5-6 років',
+      halfDay: '650 грн',
+      fullDay: '750 грн'
+    },
+    {
+      id: 5,
+      title: '0 клас',
+      age: '6 років',
+      halfDay: '680 грн',
+      fullDay: '780 грн'
+    }
+  ];
+
+  const noSubscriptionInfo = {
+    title: 'Вартість перебування у садочку',
+    content: (
+      <div className={styles.priceCardsModalWrap}>
+        <div className={styles.priceCardsModalGrid}>
+          {priceCards.map((card) => (
+            <PriceCard
+              key={card.id}
+              title={card.title}
+              age={card.age}
+              halfDay={card.halfDay}
+              fullDay={card.fullDay}
+              onDetailsClick={handleOpenModal}
+            />
+          ))}
+          <AdditionalInfoCard />
+        </div>
+      </div>
+    )
+  };
+
+  const handleNoticeActionWithInfo = () => {
+    setIsNoticeVisible(false);
+    setSelectedGroup(noSubscriptionInfo);
+    setIsInfoModalOpen(true);
   };
 
   const ageGroups = [
@@ -211,65 +275,6 @@ export default function Kindergarten() {
       )
     }
   ];
-
-  const priceCards = [
-    {
-      id: 1,
-      title: 'Ясла',
-      age: '1.5-2.5 роки',
-      halfDay: '500 грн',
-      fullDay: '600 грн'
-    },
-    {
-      id: 2,
-      title: 'Молодша група',
-      age: '3-4 роки',
-      halfDay: '500 грн',
-      fullDay: '600 грн'
-    },
-    {
-      id: 3,
-      title: 'Середня група',
-      age: '4 роки',
-      halfDay: '550 грн',
-      fullDay: '650 грн'
-    },
-    {
-      id: 4,
-      title: 'Старша група',
-      age: '5-6 років',
-      halfDay: '650 грн',
-      fullDay: '750 грн'
-    },
-    {
-      id: 5,
-      title: '0 клас',
-      age: '6 років',
-      halfDay: '680 грн',
-      fullDay: '780 грн'
-    }
-  ];
-
-  const noSubscriptionInfo = {
-    title: 'Вартість перебування у садочку',
-    content: (
-      <div className={styles.priceCardsModalWrap}>
-        <div className={styles.priceCardsModalGrid}>
-          {priceCards.map((card) => (
-            <PriceCard
-              key={card.id}
-              title={card.title}
-              age={card.age}
-              halfDay={card.halfDay}
-              fullDay={card.fullDay}
-              onDetailsClick={handleOpenModal}
-            />
-          ))}
-          <AdditionalInfoCard />
-        </div>
-      </div>
-    )
-  };
 
   const features = [
     {
@@ -435,7 +440,7 @@ export default function Kindergarten() {
           <button
             className={styles.noticeButton}
             type="button"
-            onClick={handleNoticeAction}
+            onClick={handleNoticeActionWithInfo}
           >
             Дізнатись вартість
           </button>
