@@ -847,9 +847,7 @@
     }
 
     .noticeCard,
-    .noticeBadge,
-    .arrowIcon,
-    .noSubscriptionCard {
+    .noticeBadge {
       animation: none;
     }
 
