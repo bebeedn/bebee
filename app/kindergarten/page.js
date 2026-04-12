@@ -331,10 +331,11 @@ export default function Kindergarten() {
                 <h1 className={styles.title}>Садочок BeBee</h1>
                 <div className={styles.beeBackground}>
                   <Image
-                    src="/images/bee_2S.png"
+                    src="/images/bee_2S_optimized.png"
                     alt="BeBee - логотип пчелы, символ приватного садочка"
                     fill
                     className={styles.beeImage}
+                    sizes="(max-width: 768px) 88px, 160px"
                     loading="lazy"
                   />
                 </div>
@@ -453,4 +454,3 @@ export default function Kindergarten() {
     </div>
   );
 }
-
