@@ -350,6 +350,60 @@
   color: var(--text-accent);
 }
 
+.introText {
+  max-width: 800px;
+  margin: 2rem auto 1.5rem;
+  text-align: center;
+}
+
+.introText p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--text-color);
+  margin: 0.5rem 0;
+}
+
+.introText p:first-child {
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.descriptionBlock {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin: 2rem 0;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.descriptionItem {
+  background: rgba(var(--primary-rgb), 0.08);
+  border-radius: 12px;
+  padding: 1.25rem;
+  border: 1px solid rgba(var(--primary-rgb), 0.2);
+}
+
+:global([data-theme='dark']) .descriptionItem {
+  background: var(--card-bg);
+  border-color: var(--card-border);
+}
+
+.descriptionItem h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-color);
+  margin: 0 0 0.75rem 0;
+}
+
+.descriptionItem p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
 .individualGrid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -363,15 +417,16 @@
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-radius: 0.625rem;
-  padding: 0.875rem 0.625rem;
+  padding: 1.25rem 1rem;
   box-shadow: 0 2px 8px var(--shadow);
   transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
   border: 1px solid rgba(var(--primary-rgb), 0.25);
   display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  min-height: 55px;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  text-align: left;
+  min-height: 120px;
 }
 
 :global([data-theme='dark']) .individualCard {
@@ -390,11 +445,19 @@
 }
 
 .individualTitle {
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 600;
   color: var(--text-color);
-  margin: 0;
+  margin: 0 0 0.5rem 0;
   line-height: 1.3;
+}
+
+.individualDescription {
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.5;
 }
 
 /* CTA Block */
@@ -592,17 +655,53 @@
     font-size: 1rem;
   }
 
+  .introText {
+    margin: 1.5rem auto 1rem;
+    padding: 0 1rem;
+  }
+
+  .introText p {
+    font-size: 1rem;
+  }
+
+  .introText p:first-child {
+    font-size: 1.1rem;
+  }
+
+  .descriptionBlock {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  .descriptionItem {
+    padding: 1rem;
+  }
+
+  .descriptionItem h4 {
+    font-size: 1rem;
+  }
+
+  .descriptionItem p {
+    font-size: 0.9rem;
+  }
+
   .individualGrid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0.625rem;
+    grid-template-columns: 1fr;
+    gap: 1rem;
   }
 
   .individualCard {
-    padding: 0.75rem 0.5rem;
-    min-height: 50px;
+    padding: 1rem;
+    min-height: 100px;
   }
 
   .individualTitle {
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .individualDescription {
     font-size: 0.85rem;
   }
 

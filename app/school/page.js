@@ -64,31 +64,41 @@ export default function School() {
     content: (
       <>
         <p>
-          У BeBee School ми створили простір, вільний від цифрових відволікань. 
-          З 8:30 до 18:00 діти не користуються телефонами та планшетами.
-        </p>
-        <h3>Чому це важливо?</h3>
-        <p>
-          Сучасні дослідження показують, що постійне використання гаджетів негативно впливає 
-          на концентрацію уваги, якість навчання та соціальні навички дітей.
-        </p>
-        <h3>Що ми пропонуємо замість гаджетів:</h3>
-        <ul>
-          <li><strong>Живе спілкування</strong> — діти вчаться взаємодіяти один з одним, розвивають емпатію та комунікативні навички</li>
-          <li><strong>Творчість</strong> — малювання, музика, конструювання розвивають уяву та креативне мислення</li>
-          <li><strong>Активні ігри</strong> — рухливі заняття на свіжому повітрі зміцнюють здоров'я та підвищують настрій</li>
-          <li><strong>Читання книг</strong> — розвиток уяви, словникового запасу та любові до літератури</li>
-          <li><strong>Дослідження світу</strong> — експерименти, екскурсії, практичні заняття</li>
-        </ul>
-        <h3>Результати нашого підходу:</h3>
-        <p>
-          Діти стають більш уважними, краще засвоюють матеріал, активніше спілкуються 
-          з однокласниками та вчителями. Вони вчаться знаходити радість у реальному житті, 
-          а не у віртуальному світі.
+          Антигаджетна система в нашій школі — це свідомий крок до створення якісного освітнього середовища, 
+          у якому кожна дитина має можливість максимально розкрити свій потенціал.
         </p>
         <p>
-          <strong>Ми віримо:</strong> дитинство — це час для справжніх відкриттів, дружби та розвитку, 
-          а не для екранів та нескінченного скролінгу.
+          Ми прагнемо не просто обмежити використання мобільних пристроїв, а сформувати культуру їх 
+          відповідального та усвідомленого використання. У центрі нашого підходу — розвиток уваги, 
+          критичного мислення, живого спілкування та емоційної зрілості учнів.
+        </p>
+        <p>
+          У світі постійних цифрових відволікань школа стає простором зосередженості, взаємодії та 
+          реального пізнання. Саме тут діти вчаться бути уважними, активними, відкритими до діалогу 
+          та нових знань.
+        </p>
+        <p>
+          Ми переконані, що такий підхід допомагає виховати не лише успішних учнів, а й гармонійних 
+          особистостей, які вміють керувати технологіями, а не залежати від них.
+        </p>
+        <h3>Безпека дітей</h3>
+        <p>
+          Безпека дітей є одним із наших головних пріоритетів. Ми створили середовище, у якому кожна 
+          дитина почувається захищено та комфортно протягом усього навчального дня.
+        </p>
+        <p>
+          Усі учні перебувають на першому поверсі будівлі, що забезпечує швидкий і зручний доступ до 
+          виходів у разі потреби. Приміщення обладнане захисними ролетами, які підвищують рівень 
+          безпеки та надійності.
+        </p>
+        <p>
+          Протягом усього часу діти знаходяться під постійним наглядом педагогів. Вчителі супроводжують 
+          учнів як під час занять, так і на перервах, забезпечуючи контроль, підтримку та своєчасну 
+          допомогу в будь-якій ситуації.
+        </p>
+        <p>
+          Ми робимо все можливе, щоб батьки були впевнені: їхні діти знаходяться у безпечному та 
+          турботливому середовищі.
         </p>
       </>
     )
@@ -208,27 +218,50 @@ export default function School() {
 
         <section className={`${styles.scheduleSection} ${styles.fadeIn}`} ref={el => sectionsRef.current[4] = el}>
           <div className={styles.container}>
-            <h2>Розклад дня</h2>
+            <h2>Розклад дня у BeBee</h2>
             <p className={styles.scheduleIntro}>
-              <span className={styles.scheduleIntroLine}>Школа працює з 8:30. </span>
-              <span className={styles.scheduleIntroLine}> Уроки починаються о 9:30</span>
+              У нашій школі день дитини проходить у комфортному, збалансованому ритмі — з турботою про навчання, розвиток і відпочинок 🤍
             </p>
             <div className={styles.scheduleList}>
               <div className={styles.scheduleItem}>
-                <div className={styles.scheduleTime}>9:00 - 9:30</div>
-                <div className={styles.scheduleActivity}>Сніданок</div>
+                <div className={styles.scheduleTime}>08:30</div>
+                <div className={styles.scheduleActivity}>Школа відкриває свої двері та зустрічає дітей</div>
               </div>
               <div className={styles.scheduleItem}>
-                <div className={styles.scheduleTime}>9:30 - 12:30</div>
-                <div className={styles.scheduleActivity}>Уроки</div>
+                <div className={styles.scheduleTime}>09:00 – 09:20</div>
+                <div className={styles.scheduleActivity}>Смачний та корисний сніданок</div>
               </div>
               <div className={styles.scheduleItem}>
-                <div className={styles.scheduleTime}>12:30 - 13:00</div>
-                <div className={styles.scheduleActivity}>Обід</div>
+                <div className={styles.scheduleTime}>09:30 – 13:00</div>
+                <div className={styles.scheduleActivity}>Навчальні заняття</div>
               </div>
               <div className={styles.scheduleItem}>
-                <div className={styles.scheduleTime}>Після обіду</div>
-                <div className={styles.scheduleActivity}>Кругозори, екскурсії та кулінарія</div>
+                <div className={styles.scheduleTime}>12:45 / 13:00</div>
+                <div className={styles.scheduleActivity}>Обід під час великої перерви</div>
+              </div>
+            </div>
+            <p className={styles.scheduleIntro} style={{ marginTop: '30px' }}>
+              Після навчання ми дбаємо про розвиток талантів і відновлення енергії:
+            </p>
+            <div className={styles.scheduleList}>
+              <div className={styles.scheduleItem}>
+                <div className={styles.scheduleTime}>14:00</div>
+                <div className={styles.scheduleActivity}>Творчі заняття: танці або вокал</div>
+              </div>
+              <div className={`${styles.scheduleItem} ${styles.scheduleItemNoBullet}`}>
+                <div className={styles.scheduleActivity}>Прогулянка на свіжому повітрі</div>
+              </div>
+              <div className={`${styles.scheduleItem} ${styles.scheduleItemNoBullet}`}>
+                <div className={styles.scheduleActivity}>Виконання домашніх завдань разом із вчителями (усе встигаємо зробити в школі)</div>
+              </div>
+            </div>
+            <p className={styles.scheduleIntro} style={{ marginTop: '30px' }}>
+              Далі — індивідуальний розвиток кожної дитини: додаткові гуртки, заняття та тренування за особистим розкладом
+            </p>
+            <div className={styles.scheduleList}>
+              <div className={styles.scheduleItem}>
+                <div className={styles.scheduleTime}>18:00</div>
+                <div className={styles.scheduleActivity}>Батьки забирають щасливих, натхненних і впевнених у собі дітей 🐝 💛</div>
               </div>
             </div>
           </div>
