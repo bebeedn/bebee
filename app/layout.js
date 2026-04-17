@@ -3,9 +3,9 @@ import Providers from './components/Providers';
 
 export const metadata = {
   metadataBase: new URL('https://bebee.school'),
-  title: "BeBee - Приватна школа та садочок у Києві | НУШ, англійська, малокомплектні класи",
-  description: "Приватна школа (1-4 класи) та садочок BeBee у Києві. Навчання за програмою НУШ, англійська мова, малокомплектні групи до 15 дітей. Антигаджетна школа. Запис відкрито! ☎ +38 (050) 940-07-70",
-  keywords: "приватна школа Київ, приватний садочок Київ, НУШ, початкова школа, англійська для дітей, малокомплектні класи, антигаджетна школа, BeBee School, освіта Київ, дошкільна освіта",
+  title: "BeBee - Приватна школа та садочок у Дніпрі | НУШ, англійська, малокомплектні класи",
+  description: "Приватна школа (1-4 класи) та садочок BeBee у Дніпрі. Навчання за програмою НУШ, англійська мова, малокомплектні групи до 15 дітей. Антигаджетна школа. Запис відкрито! ☎ +38 (050) 940-07-70",
+  keywords: "приватна школа Дніпро, приватний садочок Дніпро, НУШ, початкова школа, англійська для дітей, малокомплектні класи, антигаджетна школа, BeBee School, освіта Дніпро, дошкільна освіта",
   
   // Open Graph для соціальних мереж
   openGraph: {
@@ -13,14 +13,14 @@ export const metadata = {
     locale: 'uk_UA',
     url: 'https://bebee.school',
     siteName: 'BeBee School',
-    title: 'BeBee - Приватна школа та садочок у Києві',
+    title: 'BeBee - Приватна школа та садочок у Дніпрі',
     description: 'Приватна школа (1-4 класи) та садочок з якісною освітою, малокомплектними групами та англійською мовою. Запис відкрито!',
     images: [
       {
         url: '/images/logo_1.png',
         width: 1200,
         height: 630,
-        alt: 'BeBee School - Приватна школа та садочок у Києві',
+        alt: 'BeBee School - Приватна школа та садочок у Дніпрі',
       },
     ],
   },
@@ -28,7 +28,7 @@ export const metadata = {
   // Twitter Card
   twitter: {
     card: 'summary_large_image',
-    title: 'BeBee - Приватна школа та садочок у Києві',
+    title: 'BeBee - Приватна школа та садочок у Дніпрі',
     description: 'Приватна школа та садочок з якісною освітою. Запис відкрито!',
     images: ['/images/logo_1.png'],
   },
@@ -82,10 +82,10 @@ export default function RootLayout({ children }) {
           "height": 58
         },
         "image": "https://bebee.school/images/logo_1.png",
-        "description": "Приватна школа (1-4 класи) та садочок у Києві з навчанням за програмою НУШ, англійською мовою та малокомплектними групами",
+        "description": "Приватна школа (1-4 класи) та садочок у Дніпрі з навчанням за програмою НУШ, англійською мовою та малокомплектними групами",
         "address": {
           "@type": "PostalAddress",
-          "addressLocality": "Київ",
+          "addressLocality": "Дніпро",
           "addressCountry": "UA"
         },
         "telephone": "+380509400770",
@@ -93,7 +93,7 @@ export default function RootLayout({ children }) {
         "openingHours": "Mo-Fr 08:30-18:00",
         "areaServed": {
           "@type": "City",
-          "name": "Київ"
+          "name": "Дніпро"
         },
         "sameAs": [
           "https://www.facebook.com/bebeeschool",
