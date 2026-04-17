@@ -150,7 +150,7 @@ export default function School() {
               <div className={styles.aboutImage}>
                 <Image
                   src="/categories_photo/2026-03-05 14.25.12.jpg"
-                  alt="Учні BeBee School в класі - приватна початкова школа Київ"
+                  alt="Учні BeBee School в класі - приватна початкова школа Дніпро"
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className={styles.image}

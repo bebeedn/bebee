@@ -58,7 +58,7 @@ export default function Header({ onOpenModal }) {
           <Link href="/" className={styles.logo}>
             <Image 
               src="/images/logo_1.png" 
-              alt="BeBee School - приватна школа та садочок у Києві, логотип" 
+              alt="BeBee School - приватна школа та садочок у Дніпрі, логотип" 
               width={194}
               height={58}
               priority
