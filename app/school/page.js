@@ -211,21 +211,20 @@ export default function School() {
                 Такий підхід допомагає сформувати міцну базу знань і впевненість у власних можливостях.
               </p>
             </div>
-            <div className={styles.programFeatures}>
-              <div className={styles.programFeature}>
-                <h3>📚 Без підручників</h3>
+            <Link 
+              href="https://edforfuture.com.ua/odm/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className={styles.programLink}
+            >
+              <div className={styles.programLinkContent}>
+                <h3>🔗 Дізнатися більше про ОДМ</h3>
                 <p>
-                  Дитині видається 2 зошити на місяць, в яких є завдання, QR код на інтерактивні завдання 
-                  та місце для рішення задач.
+                  Перейти на офіційний сайт програми, щоб детально ознайомитись з методикою та матеріалами.
                 </p>
+                <span className={styles.programLinkButton}>Перейти до програми →</span>
               </div>
-              <div className={styles.programFeature}>
-                <h3>👨‍👩‍👧 Прозора система</h3>
-                <p>
-                  Батьківський контроль та допомога у навчанні — ви завжди в курсі успіхів вашої дитини.
-                </p>
-              </div>
-            </div>
+            </Link>
           </div>
         </section>
 
