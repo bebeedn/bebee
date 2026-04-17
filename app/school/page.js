@@ -122,6 +122,7 @@ export default function School() {
                     src="/images/bee_1.png"
                     alt="BeBee School - логотип пчелы, символ приватної школи"
                     fill
+                    sizes="160px"
                     className={styles.beeImage}
                     loading="lazy"
                   />
@@ -151,6 +152,7 @@ export default function School() {
                   src="/categories_photo/2026-03-05 14.25.12.jpg"
                   alt="Учні BeBee School в класі - приватна початкова школа Київ"
                   fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   className={styles.image}
                 />
               </div>

@@ -2,6 +2,7 @@ import "./globals.css";
 import Providers from './components/Providers';
 
 export const metadata = {
+  metadataBase: new URL('https://bebee.school'),
   title: "BeBee - Приватна школа та садочок у Києві | НУШ, англійська, малокомплектні класи",
   description: "Приватна школа (1-4 класи) та садочок BeBee у Києві. Навчання за програмою НУШ, англійська мова, малокомплектні групи до 15 дітей. Антигаджетна школа. Запис відкрито! ☎ +38 (050) 940-07-70",
   keywords: "приватна школа Київ, приватний садочок Київ, НУШ, початкова школа, англійська для дітей, малокомплектні класи, антигаджетна школа, BeBee School, освіта Київ, дошкільна освіта",
@@ -113,7 +114,7 @@ export default function RootLayout({ children }) {
   };
 
   return (
-    <html lang="uk" suppressHydrationWarning>
+    <html lang="uk" suppressHydrationWarning data-scroll-behavior="smooth">
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
         <script
