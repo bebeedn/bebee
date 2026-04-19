@@ -320,6 +320,8 @@
   transition: transform 0.3s ease;
   border-radius: 1rem;
   -webkit-mask-image: -webkit-radial-gradient(white, black);
+  clip-path: inset(0 round 1rem);
+  -webkit-clip-path: inset(0 round 1rem);
 }
 
 .classCard:hover .image {
@@ -776,6 +778,8 @@
     object-fit: contain;
     border-radius: 1rem;
     -webkit-mask-image: -webkit-radial-gradient(white, black);
+    clip-path: inset(0 round 1rem);
+    -webkit-clip-path: inset(0 round 1rem);
   }
   
   .title {
