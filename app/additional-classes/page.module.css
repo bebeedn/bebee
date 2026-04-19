@@ -309,8 +309,9 @@
   position: relative;
   width: 150px;
   height: 150px;
-  border-radius: 0.75rem;
+  border-radius: 1rem;
   overflow: hidden;
+  isolation: isolate;
 }
 
 .image {
@@ -318,6 +319,7 @@
   object-position: center;
   transition: transform 0.3s ease;
   border-radius: 1rem;
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
 }
 
 .classCard:hover .image {
@@ -772,6 +774,8 @@
 
   .imageWrapper .image {
     object-fit: contain;
+    border-radius: 1rem;
+    -webkit-mask-image: -webkit-radial-gradient(white, black);
   }
   
   .title {
