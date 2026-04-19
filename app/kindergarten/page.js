@@ -409,7 +409,10 @@ export default function Kindergarten() {
         <section className={`${styles.ctaSection} ${styles.fadeIn}`} ref={el => sectionsRef.current[2] = el}>
           <div className={styles.container}>
             <h2>Запис відкрито</h2>
-            <p>Завітайте до нас, познайомтеся з педагогами та подивіться на наш садочок</p>
+            <p>
+              Завітайте до нас, познайомтеся з педагогами та подивіться на наш садочок <br />
+              Працюємо з 8:30 до 18:00
+            </p>
             <button className={styles.ctaButton} onClick={handleOpenModal}>
               Записатися в садочок
             </button>

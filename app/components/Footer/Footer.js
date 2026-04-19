@@ -53,8 +53,8 @@ export default function Footer() {
             <div>
               <h3 className={styles.title}>BeBee</h3>
               <p className={styles.text}>
-                Приватна школа<br />
-                Якісна освіта для вашої дитини
+                Освітній простір для <br />
+                Діточок від ясельної групи у садочку до випускного у школі
               </p>
             </div>
             <a 
