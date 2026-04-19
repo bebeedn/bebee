@@ -1103,6 +1103,12 @@
     flex: 1;
   }
 
+  .scheduleItemNoBullet .scheduleActivity {
+    margin-left: 0;
+    padding-left: 10px;
+    width: 100%;
+  }
+
   .noticeCard {
     right: 16px;
     bottom: 16px;
@@ -1126,6 +1132,28 @@
 }
 
 @media (max-width: 480px) {
+  .scheduleItem {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+  }
+
+  .scheduleTime {
+    min-width: unset;
+    width: fit-content;
+    align-self: flex-start;
+  }
+
+  .scheduleActivity {
+    width: 100%;
+    flex: none;
+  }
+
+  .scheduleItemNoBullet .scheduleActivity {
+    margin-left: 0;
+    padding-left: 10px;
+  }
+
   .noticeCard {
     left: 50%;
     right: auto;
