@@ -312,6 +312,10 @@
   border-radius: 1rem;
   overflow: hidden;
   isolation: isolate;
+  /* Виправлення Safari: примусово створює новий GPU шар */
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  will-change: transform;
 }
 
 .image {
