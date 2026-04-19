@@ -775,15 +775,10 @@
     width: 100%;
     height: auto;
     aspect-ratio: 4 / 3;
-    background: rgba(var(--primary-rgb), 0.05);
-  }
-
-  .imageWrapper .image {
-    object-fit: contain;
     border-radius: 1rem;
-    -webkit-mask-image: -webkit-radial-gradient(white, black);
-    clip-path: inset(0 round 1rem);
-    -webkit-clip-path: inset(0 round 1rem);
+    overflow: hidden;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
   }
   
   .title {
