@@ -356,7 +356,7 @@ export default function AdditionalClasses() {
                     <button className={styles.ctaButton} onClick={handleOpenModal}>
                       Залишити заявку
                     </button>
-                    <a href="tel:+380123456789" className={styles.ctaButtonPhone}>
+                    <a href="tel:+380509400770" className={styles.ctaButtonPhone}>
                       <span className={styles.phoneIcon}>📞</span>
                       Подзвонити
                     </a>

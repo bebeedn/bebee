@@ -6,11 +6,11 @@ export const metadata = {
   openGraph: {
     title: "BeBee - Приватний садочок у Дніпрі",
     description: "Малокомплектні групи до 12 дітей, англійська мова, без абонементів. Запис відкрито!",
-    url: 'https://yourdomain.com/kindergarten',
+    url: 'https://bebee.dp.ua/kindergarten',
     type: 'website',
   },
   alternates: {
-    canonical: 'https://yourdomain.com/kindergarten',
+    canonical: 'https://bebee.dp.ua/kindergarten',
   },
 };
 

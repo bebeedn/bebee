@@ -6,11 +6,11 @@ export const metadata = {
   openGraph: {
     title: "Додаткові заняття для дітей у Дніпрі | BeBee",
     description: "Гуртки та додаткові заняття: малювання, спорт, музика, мови. Запис відкрито!",
-    url: 'https://yourdomain.com/additional-classes',
+    url: 'https://bebee.dp.ua/additional-classes',
     type: 'website',
   },
   alternates: {
-    canonical: 'https://yourdomain.com/additional-classes',
+    canonical: 'https://bebee.dp.ua/additional-classes',
   },
 };
 

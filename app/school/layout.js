@@ -6,11 +6,11 @@ export const metadata = {
   openGraph: {
     title: "BeBee School - Приватна початкова школа у Дніпрі",
     description: "Навчання за програмою НУШ, малочисельні класи до 15 учнів, англійська мова. Запис відкрито!",
-    url: 'https://yourdomain.com/school',
+    url: 'https://bebee.dp.ua/school',
     type: 'website',
   },
   alternates: {
-    canonical: 'https://yourdomain.com/school',
+    canonical: 'https://bebee.dp.ua/school',
   },
 };
 
