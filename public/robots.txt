@@ -1,5 +1,5 @@
 # Robots.txt для BeBee School
-# https://bebee.school
+# https://bebee.dp.ua
 
 User-agent: *
 Allow: /
@@ -15,7 +15,7 @@ Disallow: /_next/
 Disallow: /admin/
 
 # Sitemap
-Sitemap: https://bebee.school/sitemap.xml
+Sitemap: https://bebee.dp.ua/sitemap.xml
 
 # Час очікування між запитами (мілісекунди)
 Crawl-delay: 1

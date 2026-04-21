@@ -2,7 +2,7 @@ import "./globals.css";
 import Providers from './components/Providers';
 
 export const metadata = {
-  metadataBase: new URL('https://bebee.school'),
+  metadataBase: new URL('https://bebee.dp.ua'),
   title: "BeBee - Приватна школа та садочок у Дніпрі | НУШ, англійська, малокомплектні класи",
   description: "Приватна школа (1-4 класи) та садочок BeBee у Дніпрі. Навчання за програмою НУШ, англійська мова, малокомплектні групи до 15 дітей. Антигаджетна школа. Запис відкрито! ☎ +38 (050) 940-07-70",
   keywords: "приватна школа Дніпро, приватний садочок Дніпро, НУШ, початкова школа, англійська для дітей, малокомплектні класи, антигаджетна школа, BeBee School, освіта Дніпро, дошкільна освіта",
@@ -11,7 +11,7 @@ export const metadata = {
   openGraph: {
     type: 'website',
     locale: 'uk_UA',
-    url: 'https://bebee.school',
+    url: 'https://bebee.dp.ua',
     siteName: 'BeBee School',
     title: 'BeBee - Приватна школа та садочок у Дніпрі',
     description: 'Приватна школа (1-4 класи) та садочок з якісною освітою, малокомплектними групами та англійською мовою. Запис відкрито!',
@@ -71,17 +71,17 @@ export default function RootLayout({ children }) {
     "@graph": [
       {
         "@type": ["EducationalOrganization", "LocalBusiness"],
-        "@id": "https://bebee.school/#organization",
+        "@id": "https://bebee.dp.ua/#organization",
         "name": "BeBee School",
         "alternateName": "BeBee - Приватна школа та садочок",
-        "url": "https://bebee.school",
+        "url": "https://bebee.dp.ua",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://bebee.school/images/logo_1.png",
+          "url": "https://bebee.dp.ua/images/logo_1.png",
           "width": 194,
           "height": 58
         },
-        "image": "https://bebee.school/images/logo_1.png",
+        "image": "https://bebee.dp.ua/images/logo_1.png",
         "description": "Приватна школа (1-4 класи) та садочок у Дніпрі з навчанням за програмою НУШ, англійською мовою та малокомплектними групами",
         "address": {
           "@type": "PostalAddress",
@@ -102,11 +102,11 @@ export default function RootLayout({ children }) {
       },
       {
         "@type": "WebSite",
-        "@id": "https://bebee.school/#website",
-        "url": "https://bebee.school",
+        "@id": "https://bebee.dp.ua/#website",
+        "url": "https://bebee.dp.ua",
         "name": "BeBee School",
         "publisher": {
-          "@id": "https://bebee.school/#organization"
+          "@id": "https://bebee.dp.ua/#organization"
         },
         "inLanguage": "uk"
       }

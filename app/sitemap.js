@@ -1,6 +1,6 @@
 // Генерація sitemap.xml для BeBee School
 export default function sitemap() {
-  const baseUrl = 'https://bebee.school';
+  const baseUrl = 'https://bebee.dp.ua';
   const currentDate = new Date().toISOString();
 
   return [
