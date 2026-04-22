@@ -42,7 +42,7 @@ export default function Home() {
 
       <Footer />
 
-      <Modal isOpen={isModalOpen} onClose={handleCloseModal} />
+      <Modal isOpen={isModalOpen} onClose={handleCloseModal} source="Головна сторінка" />
       
       {/* Анимированная пчела */}
       <AnimatedBee />

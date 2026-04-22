@@ -332,7 +332,7 @@ export default function School() {
       )}
 
       <Footer />
-      <Modal isOpen={isModalOpen} onClose={handleCloseModal} />
+      <Modal isOpen={isModalOpen} onClose={handleCloseModal} source="Школа" />
       <InfoModal 
         isOpen={isInfoModalOpen} 
         onClose={handleCloseInfoModal}

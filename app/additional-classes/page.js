@@ -369,7 +369,7 @@ export default function AdditionalClasses() {
       </main>
 
       <Footer />
-      <Modal isOpen={isModalOpen} onClose={handleCloseModal} />
+      <Modal isOpen={isModalOpen} onClose={handleCloseModal} source="Додаткові заняття" />
       <InfoModal 
         isOpen={isInfoModalOpen} 
         onClose={handleCloseInfoModal}

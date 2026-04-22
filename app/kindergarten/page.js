@@ -447,7 +447,7 @@ export default function Kindergarten() {
       )}
 
       <Footer />
-      <Modal isOpen={isModalOpen} onClose={handleCloseModal} title="Записатися до садочка" />
+      <Modal isOpen={isModalOpen} onClose={handleCloseModal} title="Записатися до садочка" source="Садочок" />
       <InfoModal 
         isOpen={isInfoModalOpen} 
         onClose={handleCloseInfoModal}
