@@ -8,6 +8,29 @@ export async function POST(request) {
     const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN || '8759484422:AAF7O9Olhqz7sORWbD-EZNJ5EhNl_YVhCjI';
     const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID || '385279086';
 
+// Выбор бота в зависимости от источника
+let TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID;
+
+switch (source) {
+  case 'Садочок':
+    TELEGRAM_BOT_TOKEN = '8759484422:AAF7O9Olhqz7sORWbD-EZNJ5EhNl_YVhCjI';
+    TELEGRAM_CHAT_ID = '385279086';
+    break;
+  case 'Школа':
+    TELEGRAM_BOT_TOKEN = '8694250798:AAFwEz4DNhnSi1GZUZggKyQtWcbh0xW82eA';
+    TELEGRAM_CHAT_ID = '320867328';
+    break;
+  case 'Додаткові заняття':
+    TELEGRAM_BOT_TOKEN = 'ВАШ_ТОКЕН_ДЛЯ_ДОП_ЗАНЯТИЙ';
+    TELEGRAM_CHAT_ID = 'ВАШ_CHAT_ID_ДЛЯ_ДОПОВНЕНЬ';
+    break;
+  default:
+    TELEGRAM_BOT_TOKEN = '8759484422:AAF7O9Olhqz7sORWbD-EZNJ5EhNl_YVhCjI';
+    TELEGRAM_CHAT_ID = '385279086';
+}
+
+
+    
     // Формируем текст сообщения
     const telegramMessage = `
 🔔 <b>Нова заявка з сайту BeBee</b>
