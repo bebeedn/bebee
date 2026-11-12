@@ -18,7 +18,7 @@ const updatedKindergartenPricing = {
   paymentTitle: 'Оплата поденна',
   paymentSubtitle: 'Без абонементів',
   additionalPrices: [
-    { label: 'Обід', value: '150 грн' },
+    { label: 'Обід', value: '200 грн' },
     { label: 'Сніданок', value: '100 грн' },
     { label: 'Полудник', value: '50 грн' },
     { label: 'Чергова група до 19:00', value: '+100 грн' }
