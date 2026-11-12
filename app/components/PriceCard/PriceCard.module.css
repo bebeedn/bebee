@@ -18,6 +18,13 @@
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
 }
 
+.expandedCard {
+  min-height: 0;
+  padding: 16px 18px 14px;
+  justify-content: flex-start;
+  align-self: start;
+}
+
 .title {
   font-size: 16px !important;
   font-weight: 700;
@@ -32,6 +39,51 @@
   color: #ffffff;
   margin-bottom: 5px;
   font-weight: 600;
+}
+
+.card.expandedCard .age {
+  margin: 0 0 8px;
+}
+
+.detailsSection {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin: 0 0 8px;
+}
+
+.scheduleBlock,
+.paymentBlock {
+  min-width: 0;
+  padding: 6px 8px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.card .detailsLabel,
+.card .paymentTitle,
+.card .paymentSubtitle,
+.card .detailsValue {
+  margin: 0;
+}
+
+.card .detailsLabel,
+.card .paymentTitle {
+  color: #2a2a2a;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.card .detailsValue,
+.card .paymentSubtitle {
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+  margin-top: 3px;
+  line-height: 1.2;
 }
 
 .priceSection {
@@ -49,7 +101,7 @@
 .priceLabel {
   font-size: 8px;
   color: #2a2a2a;
-  margin-bottom: 30px !important;
+  margin-bottom: 30px;
   font-weight: 600;
   text-transform: uppercase;
 }
@@ -60,8 +112,36 @@
   color: #ffffff;
   margin: 0;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin-bottom: 30px !important;
+  margin-bottom: 30px;
   
+}
+
+.card .priceLabel {
+  margin: 0 0 30px;
+}
+
+.card .priceValue {
+  margin: 0 0 30px;
+}
+
+.card.expandedCard .priceSection {
+  margin: 4px 0 2px;
+}
+
+.singlePriceSection {
+  justify-content: center;
+}
+
+.singlePriceSection .priceItem {
+  flex: 0 1 50%;
+}
+
+.card.expandedCard .priceLabel {
+  margin-bottom: 4px;
+}
+
+.card.expandedCard .priceValue {
+  margin-bottom: 0;
 }
 
 .divider {
@@ -71,11 +151,78 @@
   border-radius: 2px;
 }
 
-.note {
+.additionalBlock {
+  margin: 4px 0 10px;
+  padding: 9px 10px 7px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.card .additionalTitle {
+  margin: 0 0 6px;
+  color: #2a2a2a;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.card .additionalList {
+  display: grid;
+  gap: 2px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.card .additionalItem {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 2px 0 2px 14px;
+  position: relative;
+  color: #2a2a2a;
+  font-size: 10px;
+  line-height: 1.25;
+}
+
+.card .additionalItem strong {
+  flex-shrink: 0;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.card .additionalItem::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  transform: translateY(-50%);
+}
+
+.card .note {
   font-size: 10px;
   color: #3a3a3a;
-  margin: 8px 0 30px !important;
+  margin: 8px 0 30px;
   font-style: italic;
+}
+
+.card.expandedCard .additionalBlock {
+  margin: 6px 0 6px;
+  padding: 7px 9px 6px;
+}
+
+.card.expandedCard .note {
+  margin: 4px 0 8px;
+}
+
+.card.expandedCard .detailsButton {
+  margin-bottom: 0;
 }
 
 .detailsButton {
@@ -109,6 +256,11 @@
     padding: 15px 15px;
   }
 
+  .expandedCard {
+    min-height: 0;
+    padding: 18px 15px 15px;
+  }
+
   .title {
     font-size: 22px !important;
   }
@@ -116,6 +268,16 @@
   .age {
     font-size: 20px;
     margin-bottom: 4px;
+  }
+
+  .detailsSection {
+    gap: 6px;
+    margin-bottom: 7px;
+  }
+
+  .card .detailsValue,
+  .card .paymentSubtitle {
+    font-size: 14px;
   }
 
   .priceSection {
@@ -133,14 +295,22 @@
     font-size: 22px !important;
   }
 
-  .priceLabel {
+  .card .priceLabel {
     font-size: 16px;
     margin-bottom: 2px;
   }
 
-  .note {
+  .card .note {
     font-size: 12px;
     margin: 6px 0 8px;
+  }
+
+  .additionalBlock {
+    margin-top: 4px;
+  }
+
+  .additionalItem {
+    font-size: 11px;
   }
 
   .detailsButton {
@@ -165,6 +335,17 @@
     margin-bottom: 3px;
   }
 
+  .card .detailsLabel,
+  .card .paymentTitle,
+  .card .additionalTitle {
+    font-size: 9px;
+  }
+
+  .card .detailsValue,
+  .card .paymentSubtitle {
+    font-size: 12px;
+  }
+
   .priceSection {
     gap: 8px;
     margin: 4px 0;
@@ -178,14 +359,18 @@
     font-size: 18px;
   }
 
-  .priceLabel {
+  .card .priceLabel {
     font-size: 14px;
     margin-bottom: 2px;
   }
 
-  .note {
+  .card .note {
     font-size: 10px;
     margin: 5px 0 6px;
+  }
+
+  .additionalItem {
+    font-size: 10px;
   }
 
   .detailsButton {

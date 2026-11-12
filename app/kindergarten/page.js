@@ -13,6 +13,18 @@ import styles from './page.module.css';
 const Modal = dynamic(() => import('../components/Modal/Modal'));
 const InfoModal = dynamic(() => import('../components/InfoModal/InfoModal'));
 
+const updatedKindergartenPricing = {
+  workingHours: 'з 8:30 до 18:00',
+  paymentTitle: 'Оплата поденна',
+  paymentSubtitle: 'Без абонементів',
+  additionalPrices: [
+    { label: 'Обід', value: '150 грн' },
+    { label: 'Сніданок', value: '100 грн' },
+    { label: 'Полудник', value: '50 грн' },
+    { label: 'Чергова група до 19:00', value: '+100 грн' }
+  ]
+};
+
 export default function Kindergarten() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isInfoModalOpen, setIsInfoModalOpen] = useState(false);
@@ -69,36 +81,41 @@ export default function Kindergarten() {
       id: 1,
       title: 'Ясла',
       age: '1.5-2.5 роки',
-      halfDay: '500 грн',
-      fullDay: '600 грн'
+      halfDay: '650 грн',
+      fullDay: '750 грн',
+      ...updatedKindergartenPricing
     },
     {
       id: 2,
       title: 'Молодша група',
       age: '3-4 роки',
-      halfDay: '500 грн',
-      fullDay: '600 грн'
+      halfDay: '650 грн',
+      fullDay: '750 грн',
+      ...updatedKindergartenPricing
     },
     {
       id: 3,
       title: 'Середня група',
       age: '4 роки',
-      halfDay: '550 грн',
-      fullDay: '650 грн'
+      halfDay: '650 грн',
+      fullDay: '750 грн',
+      ...updatedKindergartenPricing
     },
     {
       id: 4,
       title: 'Старша група',
       age: '5-6 років',
       halfDay: '650 грн',
-      fullDay: '750 грн'
+      fullDay: '750 грн',
+      ...updatedKindergartenPricing
     },
     {
       id: 5,
       title: '0 клас',
       age: '6 років',
-      halfDay: '680 грн',
-      fullDay: '780 грн'
+      halfDay: null,
+      fullDay: '1000 грн',
+      ...updatedKindergartenPricing
     }
   ];
 
@@ -117,6 +134,10 @@ export default function Kindergarten() {
                 age={card.age}
                 halfDay={card.halfDay}
                 fullDay={card.fullDay}
+                workingHours={card.workingHours}
+                paymentTitle={card.paymentTitle}
+                paymentSubtitle={card.paymentSubtitle}
+                additionalPrices={card.additionalPrices}
                 onDetailsClick={handleOpenModal}
               />
             ))}

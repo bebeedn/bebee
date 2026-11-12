@@ -7,7 +7,7 @@ export default function AdditionalInfoCard() {
     <div className={styles.card}>
       <div className={styles.infoItem}>
         <h3 className={styles.infoTitle}>Харчування</h3>
-        <p className={styles.infoText}>300 грн/день (оплачується окремо)</p>
+        <p className={styles.infoText}>350 грн/день (оплачується окремо)</p>
       </div>
       
       <div className={`${styles.infoItem} ${styles.infoItemSecond}`}>
